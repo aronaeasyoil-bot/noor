@@ -1,27 +1,96 @@
-const copy = {
-  fr:{navJourneys:"Voyages",navExperiences:"Expériences",navAfrica:"Afrique · Dubaï",planTrip:"Planifier un voyage",heroEyebrow:"VOTRE PROCHAINE HISTOIRE COMMENCE ICI",heroTitle:"Le voyage prend<br />une autre <em>lumière.</em>",heroText:"De l’Afrique à Dubaï, et partout où vos envies vous portent. Nous imaginons des voyages qui vous ressemblent.",discover:"Imaginer mon voyage",signature:"Des voyages pensés pour vous",searchLabel:"COMMENÇONS PAR VOTRE ENVIE",searchTitle:"Où vous emmène<br />votre prochain voyage ?",destination:"Destination",departure:"Départ souhaité",travelers:"Voyageurs",searchNote:"Une envie précise ? Notre équipe crée votre itinéraire sur mesure.",talkUs:"Parlons-en",journeyEyebrow:"SÉLECTION NOOR",journeyTitle:"Des horizons qui<br /><em>donnent envie de partir.</em>",journeyIntro:"Quelques idées pour vous inspirer. Chaque détail s’adapte à votre rythme, vos envies et votre façon de voyager.",dubaiDescription:"L’énergie de la ville, le calme du désert.",safariDescription:"Une parenthèse dorée, à votre rythme.",marinaDescription:"Dubaï scintille, le temps ralentit.",allJourneys:"Parcourir nos idées de voyage",experienceEyebrow:"PLUS QU’UNE DESTINATION",experienceTitle:"Des moments<br />qui <em>restent.</em>",experienceText:"Safari privé, transfert avec chauffeur, hôtel bien choisi ou journée à explorer. On s’occupe de l’ensemble, vous profitez du voyage.",experienceButton:"Découvrir nos expériences",servicesEyebrow:"VOTRE VOYAGE, EN UN SEUL ENDROIT",servicesTitle:"Les bonnes choses<br />se <em>préparent ensemble.</em>",servicesText:"Un conseiller à vos côtés, de la première idée jusqu’au retour. Dites-nous ce qui vous ferait plaisir.",serviceFlights:"Vols & itinéraires",serviceFlightsText:"Des départs qui vous arrangent",serviceStays:"Séjours & hôtels",serviceStaysText:"L’adresse qui change tout",serviceTransfers:"Transferts privés",serviceTransfersText:"Voyagez l’esprit tranquille",serviceTailored:"Voyages sur mesure",serviceTailoredText:"Une idée, un itinéraire unique",africaEyebrow:"DES DÉPARTS D’AFRIQUE VERS LE MONDE",africaTitle:"De chez vous<br />à <em>Dubaï.</em>",africaText:"Dakar, Abidjan, Bamako, Conakry et bien d’autres villes. NOOR vous accompagne pour organiser votre séjour, les transferts et les belles découvertes sur place.",africaButton:"Préparer mon départ",contactEyebrow:"LE PREMIER PAS EST SIMPLE",contactTitle:"Parlons de<br />votre <em>prochain départ.</em>",contactText:"Partagez votre idée, même si elle n’est pas encore très précise. Nous revenons vers vous pour imaginer la suite.",yourName:"Votre nom",yourIdea:"Qu’avez-vous en tête ?",formPrivacy:"Vos informations restent confidentielles et servent uniquement à donner suite à votre demande.",sendRequest:"Envoyer ma demande",footerLine:"Des voyages pensés avec intention."},
-  en:{navJourneys:"Journeys",navExperiences:"Experiences",navAfrica:"Africa · Dubai",planTrip:"Plan a trip",heroEyebrow:"YOUR NEXT STORY STARTS HERE",heroTitle:"Travel in a whole<br />new <em>light.</em>",heroText:"From Africa to Dubai, and wherever your curiosity takes you. We plan journeys that feel like yours.",discover:"Imagine your journey",signature:"Journeys made for you",searchLabel:"START WITH WHAT YOU LOVE",searchTitle:"Where will your<br />next journey take you?",destination:"Destination",departure:"Preferred departure",travelers:"Travellers",searchNote:"Have a place in mind? Our team will shape a journey around you.",talkUs:"Tell us more",journeyEyebrow:"THE NOOR EDIT",journeyTitle:"Horizons that make<br /><em>you want to go.</em>",journeyIntro:"A few ideas to get you started. Every detail follows your pace, your interests and the way you like to travel.",dubaiDescription:"The city’s energy, the desert’s calm.",safariDescription:"A golden hour, at your own pace.",marinaDescription:"Dubai sparkles as the evening slows.",allJourneys:"Explore our travel ideas",experienceEyebrow:"MORE THAN A DESTINATION",experienceTitle:"Moments that<br /><em>stay with you.</em>",experienceText:"A private safari, a chauffeur transfer, a thoughtful hotel or a day out exploring. We take care of the details so you can enjoy the journey.",experienceButton:"Explore experiences",servicesEyebrow:"YOUR JOURNEY, ALL IN ONE PLACE",servicesTitle:"The best trips<br />come <em>together.</em>",servicesText:"A travel advisor by your side, from your first idea to your return. Tell us what sounds good.",serviceFlights:"Flights & itineraries",serviceFlightsText:"Departures that suit you",serviceStays:"Stays & hotels",serviceStaysText:"The right place makes a difference",serviceTransfers:"Private transfers",serviceTransfersText:"Travel with peace of mind",serviceTailored:"Bespoke journeys",serviceTailoredText:"One idea, a journey of your own",africaEyebrow:"FROM AFRICA TO THE WORLD",africaTitle:"From your door<br />to <em>Dubai.</em>",africaText:"Dakar, Abidjan, Bamako, Conakry and beyond. NOOR can help arrange your stay, transfers and the memorable moments along the way.",africaButton:"Plan my departure",contactEyebrow:"THE FIRST STEP IS EASY",contactTitle:"Let’s talk about<br />your <em>next journey.</em>",contactText:"Share an idea, even if it is still taking shape. We’ll get back to you and plan what comes next.",yourName:"Your name",yourIdea:"What do you have in mind?",formPrivacy:"Your details stay private and will only be used to respond to your request.",sendRequest:"Send my request",footerLine:"Journeys planned with intention."},
-  ar:{navJourneys:"الرحلات",navExperiences:"التجارب",navAfrica:"أفريقيا · دبي",planTrip:"خطط لرحلتك",heroEyebrow:"حكايتك القادمة تبدأ هنا",heroTitle:"رحلتك تبدأ<br />بنور <em>مختلف.</em>",heroText:"من أفريقيا إلى دبي، وإلى كل مكان يأخذك إليه شغفك. نصمم رحلات تشبهك.",discover:"خطط لرحلتي",signature:"رحلات صممت لأجلك",searchLabel:"لنبدأ بما تحب",searchTitle:"إلى أين تأخذك<br />رحلتك القادمة؟",destination:"الوجهة",departure:"موعد المغادرة",travelers:"المسافرون",searchNote:"هل لديك وجهة محددة؟ نصمم لك برنامجاً يناسبك.",talkUs:"أخبرنا المزيد",journeyEyebrow:"اختيارات نور",journeyTitle:"آفاق تدعوك<br /><em>للانطلاق.</em>",journeyIntro:"بعض الأفكار لتبدأ منها. كل التفاصيل تناسب إيقاعك واهتماماتك وطريقتك في السفر.",dubaiDescription:"حيوية المدينة وهدوء الصحراء.",safariDescription:"ساعة ذهبية على مهل.",marinaDescription:"تتألق دبي ويهدأ المساء.",allJourneys:"استكشف أفكار السفر",experienceEyebrow:"أكثر من مجرد وجهة",experienceTitle:"لحظات<br /><em>تبقى معك.</em>",experienceText:"رحلة سفاري خاصة، أو انتقال مع سائق، أو فندق مميز. نهتم بالتفاصيل لتستمتع برحلتك.",experienceButton:"اكتشف تجاربنا",servicesEyebrow:"رحلتك في مكان واحد",servicesTitle:"الرحلات الجميلة<br /><em>تبدأ بالتخطيط.</em>",servicesText:"مستشارك إلى جانبك من الفكرة الأولى حتى العودة. أخبرنا بما تحب.",serviceFlights:"الرحلات الجوية والمسارات",serviceFlightsText:"مواعيد تناسبك",serviceStays:"الإقامة والفنادق",serviceStaysText:"المكان المناسب يصنع الفرق",serviceTransfers:"النقل الخاص",serviceTransfersText:"سافر براحة واطمئنان",serviceTailored:"رحلات مصممة لك",serviceTailoredText:"فكرة واحدة ورحلة فريدة",africaEyebrow:"من أفريقيا إلى العالم",africaTitle:"من باب بيتك<br />إلى <em>دبي.</em>",africaText:"داكار وأبيدجان وباماكو وكوناكري ومدن أخرى. تساعدك نور في ترتيب الإقامة والتنقلات وأجمل التجارب.",africaButton:"جهز رحلتي",contactEyebrow:"الخطوة الأولى سهلة",contactTitle:"لنتحدث عن<br /><em>رحلتك القادمة.</em>",contactText:"شاركنا فكرتك حتى لو لم تكتمل بعد. سنتواصل معك لنخطط للخطوة التالية.",yourName:"اسمك",yourIdea:"ما الذي تفكر به؟",formPrivacy:"تبقى معلوماتك سرية وتستخدم فقط للرد على طلبك.",sendRequest:"أرسل طلبي",footerLine:"رحلات صممت بعناية."}
-};
+const dialog = document.querySelector("#planner-dialog");
+const serviceField = document.querySelector("#selected-service");
+const serviceLabel = document.querySelector("#dialog-service");
+const destinationField = document.querySelector("#planner-destination");
+const languageToggle = document.querySelector(".language-button");
+const languageMenu = document.querySelector(".language-menu");
+let language = "en";
+let selectedEnglishService = "Travel planning";
+let selectedFrenchService = "Préparer un voyage";
 
-function setLanguage(language){
-  const translations=copy[language]||copy.fr;
-  document.documentElement.lang=language;
-  document.documentElement.dir=language==="ar"?"rtl":"ltr";
-  document.querySelectorAll("[data-copy]").forEach(el=>{const value=translations[el.dataset.copy];if(value!==undefined)el.innerHTML=value;});
-  document.querySelectorAll(".language-button").forEach(button=>button.classList.toggle("is-active",button.dataset.language===language));
-  try{localStorage.setItem("noor-language",language);}catch{}
+function setLanguage(nextLanguage) {
+  language = nextLanguage === "fr" ? "fr" : "en";
+  document.documentElement.lang = language;
+  document.querySelector("#current-language").textContent = language.toUpperCase();
+
+  document.querySelectorAll("[data-en][data-fr]").forEach((element) => {
+    const translation = element.dataset[language];
+    if (translation) element.innerHTML = translation;
+  });
+
+  document.querySelectorAll(".service-tile").forEach((tile) => {
+    tile.setAttribute("aria-label", language === "fr" ? tile.dataset.frService : tile.dataset.service);
+  });
+
+  serviceField.value = language === "fr" ? selectedFrenchService : selectedEnglishService;
+  serviceLabel.textContent = serviceField.value;
+  destinationField.placeholder = language === "fr"
+    ? "Dubaï, Abou Dhabi, Marrakech…"
+    : "Dubai, Abu Dhabi, Marrakech…";
+
+  try { localStorage.setItem("noor-language", language); } catch { /* Storage can be disabled. */ }
 }
 
-document.querySelectorAll(".language-button").forEach(button=>button.addEventListener("click",()=>setLanguage(button.dataset.language)));
-document.querySelector(".menu-toggle")?.addEventListener("click",event=>{
-  const header=document.querySelector(".site-header");
-  const expanded=event.currentTarget.getAttribute("aria-expanded")==="true";
-  event.currentTarget.setAttribute("aria-expanded",String(!expanded));
-  header.classList.toggle("menu-open",!expanded);
+function openPlanner(service = "Travel planning", frenchService = "Préparer un voyage") {
+  selectedEnglishService = service;
+  selectedFrenchService = frenchService;
+  serviceField.value = language === "fr" ? frenchService : service;
+  serviceLabel.textContent = language === "fr" ? frenchService : service;
+  if (!dialog.open) dialog.showModal();
+  window.setTimeout(() => destinationField.focus({ preventScroll: true }), 80);
+}
+
+document.querySelectorAll("[data-open-planner]").forEach((button) => {
+  button.addEventListener("click", () => {
+    openPlanner(button.dataset.service || "Travel planning", button.dataset.frService || "Préparer un voyage");
+  });
 });
-document.querySelectorAll(".main-nav a").forEach(link=>link.addEventListener("click",()=>{
-  document.querySelector(".site-header")?.classList.remove("menu-open");
-  document.querySelector(".menu-toggle")?.setAttribute("aria-expanded","false");
+
+document.querySelectorAll(".service-tile").forEach((tile) => {
+  tile.setAttribute("aria-pressed", "false");
+  tile.addEventListener("click", () => {
+    document.querySelectorAll(".service-tile").forEach((item) => item.setAttribute("aria-pressed", "false"));
+    tile.setAttribute("aria-pressed", "true");
+    openPlanner(tile.dataset.service, tile.dataset.frService);
+  });
+});
+
+document.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+dialog.addEventListener("click", (event) => {
+  if (event.target === dialog) dialog.close();
+});
+
+languageToggle.addEventListener("click", () => {
+  const expanded = languageToggle.getAttribute("aria-expanded") === "true";
+  languageToggle.setAttribute("aria-expanded", String(!expanded));
+  languageMenu.hidden = expanded;
+});
+
+languageMenu.querySelectorAll("[data-language]").forEach((button) => {
+  button.addEventListener("click", () => {
+    setLanguage(button.dataset.language);
+    languageToggle.setAttribute("aria-expanded", "false");
+    languageMenu.hidden = true;
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".top-actions")) {
+    languageToggle.setAttribute("aria-expanded", "false");
+    languageMenu.hidden = true;
+  }
+});
+
+const menuButton = document.querySelector(".menu-button");
+const menu = document.querySelector("#main-menu");
+menuButton.addEventListener("click", () => {
+  const expanded = menuButton.getAttribute("aria-expanded") === "true";
+  menuButton.setAttribute("aria-expanded", String(!expanded));
+  menu.hidden = expanded;
+});
+menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+  menuButton.setAttribute("aria-expanded", "false");
+  menu.hidden = true;
 }));
-let preferred="fr";try{preferred=localStorage.getItem("noor-language")||"fr";}catch{}setLanguage(preferred);
+
+try { setLanguage(localStorage.getItem("noor-language") || "en"); } catch { setLanguage("en"); }
