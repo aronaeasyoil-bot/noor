@@ -12,6 +12,9 @@ function setLanguage(nextLanguage) {
   language = nextLanguage === "fr" ? "fr" : "en";
   document.documentElement.lang = language;
   document.querySelector("#current-language").textContent = language.toUpperCase();
+  document.querySelector(".whatsapp-help")?.setAttribute("aria-label", language === "fr"
+    ? "Besoin d’aide ? Discuter avec un agent de Noor sur WhatsApp"
+    : "Need help? Chat with a NOOR agent on WhatsApp");
 
   document.querySelectorAll("[data-en][data-fr]").forEach((element) => {
     const translation = element.dataset[language];
