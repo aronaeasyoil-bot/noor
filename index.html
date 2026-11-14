@@ -49,36 +49,37 @@
     </header>
 
     <main>
+      <div class="home-view" id="home-view">
       <section class="service-shortcuts" aria-label="Travel services">
-        <button class="service-tile" type="button" data-service="Hotels & homes" data-fr-service="Hôtels & séjours">
+        <button class="service-tile" type="button" data-open-service="hotels">
           <span class="service-icon primary"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 14.5h22v10H5zM8 14V9h16v5M5 18h22M9 24.5v2M23 24.5v2M9 11h4M19 11h4"></path></svg></span>
           <span data-en="Hotels & homes" data-fr="Hôtels & séjours">Hotels & homes</span>
         </button>
-        <button class="service-tile" type="button" data-service="Flights" data-fr-service="Vols">
+        <button class="service-tile" type="button" data-open-service="flights">
           <span class="service-icon primary"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m4 17 9.2-2.2L22.8 5c1.5-1.5 3.2-.7 2.5 1.2l-4.1 10.1-2.1 6.5-2.1 2.1-2.5-7-7 1.3-2 2-1.5-.4 2.4-3.8z"></path></svg></span>
           <span data-en="Flights" data-fr="Vols">Flights</span>
         </button>
-        <button class="service-tile" type="button" data-service="Car rentals" data-fr-service="Location de voiture">
+        <button class="service-tile" type="button" data-open-service="cars">
           <span class="service-icon primary"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m6 18 2-6.5h16l2 6.5v6H6zM8 18h16M10 24v2M22 24v2M9 11.5l2.5-4h9l2.5 4M9.5 21h.1M22.5 21h.1"></path></svg></span>
           <span data-en="Car rentals" data-fr="Voitures">Car rentals</span>
         </button>
-        <button class="service-tile" type="button" data-service="Tours" data-fr-service="Circuits">
+        <button class="service-tile" type="button" data-open-service="tours">
           <span class="service-icon primary"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M14.5 27 16 17l-7 5 2-8-6-3 9 1 2-9 2 9 9-1-6 4 4 7-8-5z"></path></svg></span>
           <span data-en="Tours" data-fr="Circuits">Tours</span>
         </button>
-        <button class="service-tile" type="button" data-service="Attractions & activities" data-fr-service="Activités">
+        <button class="service-tile" type="button" data-open-service="attractions">
           <span class="service-icon secondary"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5.5 19 8l4-.2.2 4 2.8 2.8-2.8 2.8-.2 4-4-.2-3 2.8-3-2.8-4 .2-.2-4L6 14.6l2.8-2.8.2-4 4 .2z"></path><circle cx="16" cy="15" r="3.3"></circle></svg></span>
           <span data-en="Attractions & activities" data-fr="Activités & visites">Attractions &amp;<br />activities</span>
         </button>
-        <button class="service-tile" type="button" data-service="Cruises" data-fr-service="Croisières">
+        <button class="service-tile" type="button" data-open-service="cruises">
           <span class="service-icon secondary"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 19h20l-3 6H9zM10 16l6-9 6 9M16 7V4M4 27c2 1 4 1 6 0s4-1 6 0 4 1 6 0 4-1 6 0"></path></svg></span>
           <span data-en="Cruises" data-fr="Croisières">Cruises</span>
         </button>
-        <button class="service-tile" type="button" data-service="Travel guides" data-fr-service="Guides de voyage">
+        <button class="service-tile" type="button" data-open-service="guides">
           <span class="service-icon secondary"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9c-3-2-6-2-10-1v17c4-1 7-1 10 1 3-2 6-2 10-1V8c-4-1-7-1-10 1zM16 9v17"></path><path d="M8.5 12h4M8.5 16h4M19.5 12h4M19.5 16h4"></path></svg></span>
           <span data-en="Travel guides" data-fr="Guides">Travel guides</span>
         </button>
-        <button class="service-tile" type="button" data-service="Airport transfers" data-fr-service="Transferts aéroport">
+        <button class="service-tile" type="button" data-open-service="transfers">
           <span class="service-icon secondary"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 19h20l-2-6H8zM5 19v6h22v-6M10 25v2M22 25v2M8 13l2-4h12l2 4M9 21h.1M23 21h.1M4 13l5 1M28 13l-5 1"></path></svg></span>
           <span data-en="Airport transfers" data-fr="Transferts">Airport<br />transfers</span>
         </button>
@@ -87,7 +88,7 @@
       <div class="page-dots" aria-label="Service pages"><span class="active"></span><span></span></div>
 
       <section class="deal-section" aria-labelledby="deal-title">
-        <div class="section-title-row"><h1 id="deal-title" data-en="Limited-time inspiration" data-fr="Les belles idées du moment">Limited-time inspiration</h1><button type="button" class="text-button" data-open-planner data-en="Explore ↗" data-fr="Découvrir ↗">Explore ↗</button></div>
+        <div class="section-title-row"><h1 id="deal-title" data-en="Limited-time inspiration" data-fr="Les belles idées du moment">Limited-time inspiration</h1><button type="button" class="text-button" data-open-service="inspiration" data-en="Explore ↗" data-fr="Découvrir ↗">Explore ↗</button></div>
         <article class="deal-card">
           <img src="/public/images/dubai-hero.jpg" alt="Dubai skyline glowing in the late afternoon sun" fetchpriority="high" />
           <div class="deal-shade"></div>
@@ -95,7 +96,7 @@
             <span class="deal-kicker" data-en="A NOOR CITY ESCAPE" data-fr="UNE ESCAPADE NOOR">A NOOR CITY ESCAPE</span>
             <h2 data-en="Dubai, with room<br />for wonder." data-fr="Dubaï, côté<br />merveilles.">Dubai, with room<br />for wonder.</h2>
             <p data-en="City lights, desert skies, your own rhythm." data-fr="Lumières de la ville, ciel du désert, votre rythme.">City lights, desert skies, your own rhythm.</p>
-            <button class="deal-button" type="button" data-open-planner data-service="Dubai city escape" data-fr-service="Escapade à Dubaï"><span data-en="Plan your escape" data-fr="Préparer mon séjour">Plan your escape</span><span aria-hidden="true">↗</span></button>
+            <button class="deal-button" type="button" data-open-service="inspiration"><span data-en="Explore Dubai" data-fr="Découvrir Dubaï">Explore Dubai</span><span aria-hidden="true">↗</span></button>
           </div>
           <span class="deal-count">NOOR <b>01</b> / 03</span>
         </article>
@@ -108,40 +109,42 @@
       </div>
 
       <section class="inspiration-section" id="inspiration" aria-labelledby="inspiration-title">
-        <div class="section-title-row inspiration-heading"><h2 id="inspiration-title" data-en="Ideas for your next journey" data-fr="Inspirations pour votre prochain voyage">Ideas for your next journey</h2><button type="button" class="text-button desktop-only" data-open-planner data-en="See all ↗" data-fr="Tout voir ↗">See all ↗</button></div>
+        <div class="section-title-row inspiration-heading"><h2 id="inspiration-title" data-en="Ideas for your next journey" data-fr="Inspirations pour votre prochain voyage">Ideas for your next journey</h2><button type="button" class="text-button desktop-only" data-open-service="inspiration" data-en="See all ↗" data-fr="Tout voir ↗">See all ↗</button></div>
         <div class="story-grid">
           <article class="story-card">
-            <button class="story-image" type="button" data-open-planner data-service="Abu Dhabi city guide" data-fr-service="Découvrir Abu Dhabi"><img src="/public/images/abu-dhabi-mosque.jpg" alt="Sheikh Zayed Grand Mosque in Abu Dhabi beneath a blue sky" loading="lazy" /><span class="story-location">ABU DHABI · UAE</span></button>
+            <button class="story-image" type="button" data-open-story="abu-dhabi"><img src="/public/images/abu-dhabi-mosque.jpg" alt="Sheikh Zayed Grand Mosque in Abu Dhabi beneath a blue sky" loading="lazy" /><span class="story-location">ABU DHABI · UAE</span></button>
             <div class="story-copy"><h3 data-en="A morning among white domes" data-fr="Un matin sous les dômes blancs">A morning among white domes</h3><div class="story-meta"><span class="author-avatar avatar-blue">N</span><span data-en="NOOR city guide" data-fr="Guide NOOR">NOOR city guide</span><span class="meta-spacer"></span><span class="meta-note">4 min</span></div></div>
           </article>
           <article class="story-card story-offset">
-            <button class="story-image" type="button" data-open-planner data-service="Dubai island stay" data-fr-service="Séjour sur une île à Dubaï"><img src="/public/images/dubai-island-resort.jpg" alt="A palm-lined resort pool in Dubai at golden hour" loading="lazy" /><span class="story-location">DUBAI · UAE</span></button>
+            <button class="story-image" type="button" data-open-story="island-stay"><img src="/public/images/dubai-island-resort.jpg" alt="A palm-lined resort pool in Dubai at golden hour" loading="lazy" /><span class="story-location">DUBAI · UAE</span></button>
             <div class="story-copy"><h3 data-en="An island stay, at your pace" data-fr="Une île, à votre rythme">An island stay, at your pace</h3><div class="story-meta"><span class="author-avatar avatar-sand">N</span><span data-en="NOOR stays" data-fr="Séjours NOOR">NOOR stays</span><span class="meta-spacer"></span><span class="meta-note">6 min</span></div></div>
           </article>
           <article class="story-card">
-            <button class="story-image" type="button" data-open-planner data-service="Dubai Marina evening" data-fr-service="Soirée sur la marina"><img src="/public/images/dubai-marina.jpg" alt="A traditional dhow and the illuminated Dubai Marina skyline at night" loading="lazy" /><span class="story-location">DUBAI MARINA</span></button>
+            <button class="story-image" type="button" data-open-story="marina"><img src="/public/images/dubai-marina.jpg" alt="A traditional dhow and the illuminated Dubai Marina skyline at night" loading="lazy" /><span class="story-location">DUBAI MARINA</span></button>
             <div class="story-copy"><h3 data-en="An evening on the water" data-fr="Une soirée au fil de l’eau">An evening on the water</h3><div class="story-meta"><span class="author-avatar avatar-rose">N</span><span data-en="NOOR experiences" data-fr="Expériences NOOR">NOOR experiences</span><span class="meta-spacer"></span><span class="meta-note">3 min</span></div></div>
           </article>
           <article class="story-card story-offset">
-            <button class="story-image" type="button" data-open-planner data-service="Palm Jumeirah experience" data-fr-service="Expérience sur Palm Jumeirah"><img src="/public/images/skydiving-dubai.jpg" alt="Skydivers gliding above Palm Jumeirah" loading="lazy" /><span class="story-location">PALM JUMEIRAH</span></button>
+            <button class="story-image" type="button" data-open-story="palm"><img src="/public/images/skydiving-dubai.jpg" alt="Skydivers gliding above Palm Jumeirah" loading="lazy" /><span class="story-location">PALM JUMEIRAH</span></button>
             <div class="story-copy"><h3 data-en="A new view of Palm Jumeirah" data-fr="Palm Jumeirah vue du ciel">A new view of Palm Jumeirah</h3><div class="story-meta"><span class="author-avatar avatar-aqua">N</span><span data-en="NOOR experiences" data-fr="Expériences NOOR">NOOR experiences</span><span class="meta-spacer"></span><span class="meta-note">5 min</span></div></div>
           </article>
           <article class="story-card">
-            <button class="story-image" type="button" data-open-planner data-service="Dubai city transport" data-fr-service="Se déplacer à Dubaï"><img src="/public/images/dubai-metro.jpg" alt="Dubai Metro moving through the city's skyline" loading="lazy" /><span class="story-location">DUBAI · CITY GUIDE</span></button>
+            <button class="story-image" type="button" data-open-story="metro"><img src="/public/images/dubai-metro.jpg" alt="Dubai Metro moving through the city's skyline" loading="lazy" /><span class="story-location">DUBAI · CITY GUIDE</span></button>
             <div class="story-copy"><h3 data-en="Find your way through the city" data-fr="Explorer la ville en toute liberté">Find your way through the city</h3><div class="story-meta"><span class="author-avatar avatar-blue">N</span><span data-en="NOOR city guide" data-fr="Guide NOOR">NOOR city guide</span><span class="meta-spacer"></span><span class="meta-note">4 min</span></div></div>
           </article>
           <article class="story-card story-offset">
-            <button class="story-image" type="button" data-open-planner data-service="Old Dubai discovery" data-fr-service="Découvrir le vieux Dubaï"><img src="/public/images/dubai-gold-souk.jpg" alt="Traditional gold jewellery displayed in Dubai's Gold Souk" loading="lazy" /><span class="story-location">OLD DUBAI</span></button>
+            <button class="story-image" type="button" data-open-story="old-dubai"><img src="/public/images/dubai-gold-souk.jpg" alt="Traditional gold jewellery displayed in Dubai's Gold Souk" loading="lazy" /><span class="story-location">OLD DUBAI</span></button>
             <div class="story-copy"><h3 data-en="A stroll through the old souk" data-fr="Flâner dans les souks historiques">A stroll through the old souk</h3><div class="story-meta"><span class="author-avatar avatar-sand">N</span><span data-en="NOOR city guide" data-fr="Guide NOOR">NOOR city guide</span><span class="meta-spacer"></span><span class="meta-note">5 min</span></div></div>
           </article>
         </div>
-        <button type="button" class="more-button" data-open-planner data-en="Plan a journey inspired by these ideas" data-fr="Préparer un voyage inspiré par ces idées">Plan a journey inspired by these ideas <span>↗</span></button>
+        <button type="button" class="more-button" data-open-service="inspiration" data-en="Explore all travel ideas" data-fr="Découvrir toutes les inspirations">Explore all travel ideas <span>↗</span></button>
       </section>
 
       <section class="services-strip" id="services" aria-label="NOOR travel services">
         <div><span class="strip-kicker" data-en="ONE TEAM, MANY WAYS TO GO" data-fr="UNE ÉQUIPE, MILLE FAÇONS DE PARTIR">ONE TEAM, MANY WAYS TO GO</span><h2 data-en="Make the whole journey yours." data-fr="Composez un voyage qui vous ressemble.">Make the whole journey yours.</h2></div>
         <button type="button" data-open-planner data-en="Talk to NOOR ↗" data-fr="Parler à NOOR ↗">Talk to NOOR ↗</button>
       </section>
+      </div>
+      <section class="service-view" id="service-view" aria-live="polite" hidden></section>
     </main>
 
     <footer class="site-footer"><a class="footer-logo" href="#top"><img src="/public/images/noor-wordmark.jpg" alt="NOOR" /></a><p data-en="Thoughtful journeys, from first idea to the way back." data-fr="Des voyages pensés du premier rêve au retour.">Thoughtful journeys, from first idea to the way back.</p><span>© NOOR 2026</span></footer>
