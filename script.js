@@ -64,6 +64,42 @@ const stories = {
   "old-dubai": { en: ["Old Dubai", "A stroll through the old souk", "Walk the historic lanes, pause by the creek and notice the colours and craft of the Gold Souk. A guide can help bring the neighbourhood’s stories into focus.", "dubai-gold-souk.jpg", "Gold jewellery in Dubai's Gold Souk"], fr: ["Vieux Dubaï", "Flâner dans les souks historiques", "Parcourez les ruelles anciennes, faites une pause près de la crique et observez les couleurs et le savoir-faire du Gold Souk. Un guide peut vous aider à comprendre l’histoire du quartier.", "dubai-gold-souk.jpg", "Bijoux en or dans le Gold Souk de Dubaï"], service: "guides" }
 };
 
+const hotelSections = [
+  { id: "uae-hotels", en: "Popular hotels in the UAE", fr: "Hôtels populaires aux Émirats", cards: [
+    ["Rove City Centre, Deira", "Rove City Centre, Deira", "A convenient city base in the heart of Deira.", "Un pied-à-terre pratique au cœur de Deira.", "dubai-hero.jpg", "Dubai city skyline", "La skyline de Dubaï", "DUBAI"],
+    ["Millennium Al Rawdah Hotel", "Millennium Al Rawdah Hotel", "An Abu Dhabi stay close to the capital’s cultural landmarks.", "Un séjour à Abou Dhabi, près des lieux culturels de la capitale.", "abu-dhabi-mosque.jpg", "Abu Dhabi landmark", "Un lieu emblématique d’Abou Dhabi", "ABU DHABI"],
+    ["Hampton by Hilton Marjan Island", "Hampton by Hilton Marjan Island", "A relaxed island setting for a slower coastal break.", "Un cadre insulaire paisible pour une escapade en bord de mer.", "dubai-island-resort.jpg", "Island resort pool", "Piscine d’un resort insulaire", "RAS AL KHAIMAH"],
+    ["Aloft Al Ain", "Aloft Al Ain", "A comfortable base for discovering Al Ain and its green spaces.", "Un séjour confortable pour découvrir Al Ain et ses oasis.", "desert-safari.jpg", "Desert landscape in the Emirates", "Paysage désertique des Émirats", "AL AIN"],
+    ["La Quinta by Wyndham Dubai Jumeirah", "La Quinta by Wyndham Dubai Jumeirah", "A city stay with the waterfront and Old Dubai within reach.", "Un séjour en ville, entre front de mer et vieux Dubaï.", "dubai-marina.jpg", "Dubai waterfront at night", "Le front de mer de Dubaï le soir", "DUBAI"],
+    ["Resident Hotel", "Resident Hotel", "A simple, comfortable starting point for your UAE trip.", "Un point de départ simple et confortable pour votre voyage aux Émirats.", "hotels/guest-room.jpg", "Comfortable hotel room", "Une chambre d’hôtel confortable", "UAE STAYS"]
+  ] },
+  { id: "uae-cities", en: "Popular cities in United Arab Emirates", fr: "Villes populaires aux Émirats arabes unis", cards: [
+    ["Dubai", "Dubaï", "City views, beach days and desert horizons.", "Panoramas urbains, journées à la plage et horizons du désert.", "dubai-hero.jpg", "Dubai skyline", "La skyline de Dubaï", "CITY GUIDE"],
+    ["Abu Dhabi", "Abou Dhabi", "Culture, architecture and a calm waterfront.", "Culture, architecture et front de mer paisible.", "abu-dhabi-mosque.jpg", "Sheikh Zayed Grand Mosque", "La grande mosquée Sheikh Zayed", "CITY GUIDE"],
+    ["Coastal Emirates", "Les Émirats côté mer", "A relaxed base for resort stays and coastal escapes.", "Un cadre paisible pour les séjours en resort et les escapades côtières.", "dubai-island-resort.jpg", "Coastal resort stay", "Un séjour en resort côtier", "COASTAL STAYS"]
+  ] },
+  { id: "world-cities", en: "Popular cities worldwide", fr: "Villes populaires dans le monde", cards: [
+    ["Paris", "Paris", "Classic boulevards, neighbourhood cafés and landmark views.", "Boulevards élégants, cafés de quartier et monuments emblématiques.", "hotels/paris.jpg", "Eiffel Tower above Paris rooftops", "La tour Eiffel au-dessus des toits de Paris", "FRANCE"],
+    ["London", "Londres", "Riverside walks, historic streets and a lively city rhythm.", "Promenades au bord de la Tamise, rues historiques et énergie citadine.", "hotels/london.jpg", "London skyline by the Thames", "La skyline de Londres au bord de la Tamise", "UNITED KINGDOM"],
+    ["Tokyo", "Tokyo", "Bright city nights, quiet gardens and neighbourhood discoveries.", "Nuits lumineuses, jardins paisibles et découvertes de quartier.", "hotels/tokyo.jpg", "Tokyo Tower and city lights", "La tour de Tokyo et les lumières de la ville", "JAPAN"]
+  ] },
+  { id: "luxury-hotels", en: "Top luxury 5-star hotels", fr: "Hôtels 5 étoiles de luxe", cards: [
+    ["Island resort escapes", "Escapades en resort insulaire", "A slower stay with room for the water, wellness and sunset views.", "Un séjour au bord de l’eau, entre bien-être et couchers de soleil.", "dubai-island-resort.jpg", "Resort pool at golden hour", "Piscine d’un resort à l’heure dorée", "LUXURY STAYS"],
+    ["Skyline suites", "Suites avec vue sur la skyline", "A polished city stay with the energy of Dubai close by.", "Un séjour raffiné en ville, au rythme de Dubaï.", "dubai-hero.jpg", "Dubai skyline", "La skyline de Dubaï", "CITY HOTELS"],
+    ["Desert retreats", "Retraites dans le désert", "Space to slow down, with wide-open landscapes all around.", "De l’espace pour ralentir, dans de vastes paysages.", "desert-safari.jpg", "Desert landscape at sunset", "Paysage désertique au coucher du soleil", "DESERT STAYS"]
+  ] },
+  { id: "budget-stays", en: "Budget-friendly properties worldwide", fr: "Hébergements abordables dans le monde", cards: [
+    ["Comfortable city rooms", "Chambres confortables en ville", "Practical rooms that keep you close to the places you came to see.", "Des chambres pratiques, proches des lieux que vous souhaitez découvrir.", "hotels/guest-room.jpg", "Comfortable city hotel room", "Chambre confortable en ville", "GOOD VALUE"],
+    ["Well-connected stays", "Séjours bien desservis", "Choose a convenient neighbourhood and make more of each day.", "Choisissez un quartier pratique et profitez pleinement de chaque journée.", "dubai-metro.jpg", "Dubai Metro crossing the city", "Le métro de Dubaï traverse la ville", "CITY BREAKS"],
+    ["Homes for longer trips", "Logements pour les longs séjours", "An easy home base with space to settle in.", "Un pied-à-terre accueillant où prendre ses habitudes.", "hotels/guesthouse.jpg", "Home with a garden and pool", "Maison avec jardin et piscine", "HOMES"]
+  ] },
+  { id: "guest-houses", en: "Trending guest houses worldwide", fr: "Maisons d’hôtes tendance dans le monde", cards: [
+    ["Garden guest houses", "Maisons d’hôtes avec jardin", "Smaller stays with a more personal, at-home feel.", "Des adresses intimistes à l’atmosphère chaleureuse.", "hotels/guesthouse.jpg", "Guest house with a garden", "Maison d’hôtes avec jardin", "GUEST HOUSES"],
+    ["Characterful rooms", "Chambres pleines de charme", "Thoughtful details and a welcoming place to return to.", "Des détails soignés et une adresse accueillante où revenir.", "hotels/guest-room.jpg", "Warm guest room interior", "Intérieur chaleureux d’une chambre d’hôtes", "BOUTIQUE STAYS"],
+    ["A quieter escape", "Une escapade au calme", "Find a slower rhythm just beyond the busy city centre.", "Retrouvez un rythme plus doux à l’écart de l’agitation du centre.", "desert-safari.jpg", "Quiet desert retreat", "Une retraite paisible dans le désert", "SLOW STAYS"]
+  ] }
+];
+
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
 
 function setLanguage(nextLanguage) {
@@ -159,6 +195,98 @@ function renderServicePage(page) {
   </div>`;
 }
 
+function renderHotelPage() {
+  const isFrench = language === "fr";
+  const sections = hotelSections.map((section) => {
+    const heading = isFrench ? section.fr : section.en;
+    const kind = section.id === "world-cities" || section.id === "uae-cities" ? "city" : section.id === "luxury-hotels" ? "resort" : section.id === "budget-stays" ? "budget" : section.id === "guest-houses" ? "guest" : "hotel";
+    const cards = section.cards.map(([nameEn, nameFr, descEn, descFr, image, altEn, altFr, tag]) => {
+      const name = isFrench ? nameFr : nameEn;
+      const description = isFrench ? descFr : descEn;
+      const alt = isFrench ? altFr : altEn;
+      const haystack = `${name} ${description} ${tag} ${heading}`.toLocaleLowerCase(language);
+      return `<article class="hotel-content-card" data-hotel-section="${section.id}" data-hotel-kind="${kind}" data-hotel-text="${escapeHtml(haystack)}">
+        <img src="/public/images/${escapeHtml(image)}" alt="${escapeHtml(alt)}" loading="lazy" />
+        <div class="hotel-content-card-copy"><span class="hotel-card-tag">${escapeHtml(tag)}</span><h3>${escapeHtml(name)}</h3><p>${escapeHtml(description)}</p><button type="button" data-open-planner data-service="${escapeHtml(nameEn)}" data-fr-service="${escapeHtml(nameFr)}">${isFrench ? "Demander des informations" : "Ask NOOR"} <span aria-hidden="true">↗</span></button></div>
+      </article>`;
+    }).join("");
+    const browseLabel = isFrench ? "Faire défiler les suggestions" : "Scroll suggestions";
+    return `<section class="hotel-carousel-section" id="${section.id}" data-hotel-carousel-section="${section.id}" aria-labelledby="${section.id}-title">
+      <div class="hotel-section-heading"><div><span>${isFrench ? "SÉLECTION NOOR" : "THE NOOR EDIT"}</span><h2 id="${section.id}-title">${escapeHtml(heading)}</h2></div><div class="hotel-carousel-controls"><button type="button" data-hotel-scroll="${section.id}" data-direction="-1" aria-label="${browseLabel}">‹</button><button type="button" data-hotel-scroll="${section.id}" data-direction="1" aria-label="${browseLabel}">›</button></div></div>
+      <div class="hotel-carousel-track" id="track-${section.id}">${cards}</div>
+    </section>`;
+  }).join("");
+  const backText = isFrench ? "Retour à l’accueil" : "Back to home";
+  const cityFilter = isFrench ? "Toutes les idées" : "All stay ideas";
+  const statusText = isFrench ? "Les tarifs et disponibilités sont confirmés par NOOR." : "Rates and availability are confirmed with NOOR.";
+  const options = isFrench ? "Demander des propositions à NOOR" : "Ask NOOR for stay options";
+  const emptyText = isFrench ? "Aucune suggestion ne correspond à cette recherche. Essayez une autre destination." : "No suggestions match this search. Try another destination.";
+  const offers = isFrench ? [
+    ["POUR VOTRE PROCHAIN SÉJOUR", "Une sélection à votre mesure", "Partagez vos dates et vos envies pour recevoir des idées qui correspondent à votre voyage."],
+    ["SÉJOUR + VOL", "Pensez le voyage dans son ensemble", "Associez votre hébergement à vos vols, transferts et activités préférés."]
+  ] : [
+    ["FOR YOUR NEXT STAY", "A shortlist shaped around you", "Share your dates and preferences to receive ideas that fit your journey."],
+    ["STAY + FLIGHT", "Plan the whole trip together", "Pair your accommodation with flights, transfers and experiences you like."]
+  ];
+  const offerCards = offers.map(([tag, title, description]) => `<article class="hotel-offer-card"><span>${escapeHtml(tag)}</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p><button type="button" data-open-planner data-service="Hotel stay" data-fr-service="Séjour à l’hôtel">${isFrench ? "Parler à NOOR" : "Talk to NOOR"} <span aria-hidden="true">↗</span></button></article>`).join("");
+  const confidence = isFrench ? [
+    ["◎", "Un conseiller à vos côtés", "Un échange humain pour préciser vos priorités."],
+    ["◇", "Des propositions claires", "Les détails de chaque option sont partagés avant votre décision."],
+    ["↗", "Une assistance directe", "Contactez l’équipe NOOR sur WhatsApp si vous avez besoin d’aide."]
+  ] : [
+    ["◎", "A real person to help", "Speak with an advisor and shape the stay around your priorities."],
+    ["◇", "Clear options", "Review the details of each proposal before making a decision."],
+    ["↗", "Direct travel support", "Reach the NOOR team on WhatsApp whenever you need help."]
+  ];
+  const confidenceTitle = isFrench ? "Réservez en toute confiance" : "Book with confidence";
+  const confidenceCards = confidence.map(([symbol, title, description]) => `<div class="hotel-confidence-item"><span aria-hidden="true">${symbol}</span><div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p></div></div>`).join("");
+  const destinationPlaceholder = isFrench ? "Destination ou établissement" : "Enter a destination or property";
+  const searchText = isFrench ? "Rechercher" : "Search";
+  const dateFrom = isFrench ? "Arrivée" : "Check-in";
+  const dateTo = isFrench ? "Départ" : "Check-out";
+  const adultsLabel = isFrench ? "Adultes" : "Adults";
+  const childrenLabel = isFrench ? "Enfants" : "Children";
+  const roomsLabel = isFrench ? "Chambres" : "Rooms";
+  const filterLabel = isFrench ? "Type de séjour" : "Stay type";
+  const filterOptions = isFrench ? [["all", "Tous les séjours"], ["city", "Séjours en ville"], ["resort", "Resorts & bord de mer"], ["budget", "Petits budgets"], ["guest", "Maisons d’hôtes"]] : [["all", "All stay ideas"], ["city", "City stays"], ["resort", "Resorts & coast"], ["budget", "Budget-friendly"], ["guest", "Guest houses"]];
+  const filterSelect = filterOptions.map(([value, label]) => `<option value="${value}">${escapeHtml(label)}</option>`).join("");
+
+  return `<div class="hotel-page">
+    <section class="hotel-landing">
+      <div class="hotel-landing-inner">
+        <div class="hotel-page-top"><button class="service-back" type="button">← ${backText}</button><span>NOOR <b>/</b> ${isFrench ? "Hôtels & séjours" : "Hotels & Homes"}</span></div>
+        ${serviceNavMarkup()}
+        <p class="hotel-kicker">${isFrench ? "DES SÉJOURS PENSÉS POUR VOUS" : "STAYS, THOUGHTFULLY CHOSEN"}</p>
+        <h1>${isFrench ? "Hôtels & séjours" : "Hotels & Homes"}<span>.</span></h1>
+        <p class="hotel-lead">${isFrench ? "Découvrez des hôtels, maisons et resorts pour chaque façon de voyager." : "Explore hotels, homes and resorts for every kind of journey."}</p>
+        <form class="hotel-search-form" id="hotel-search-form">
+          <label class="hotel-search-destination"><span aria-hidden="true">⌕</span><span class="sr-only">${destinationPlaceholder}</span><input id="hotel-destination" name="destination" type="search" placeholder="${destinationPlaceholder}" autocomplete="off" /></label>
+          <div class="hotel-search-row">
+            <label class="hotel-date-field"><span>${dateFrom}</span><input type="date" name="checkin" aria-label="${dateFrom}" /></label>
+            <label class="hotel-date-field"><span>${dateTo}</span><input type="date" name="checkout" aria-label="${dateTo}" /></label>
+          </div>
+          <div class="hotel-search-row hotel-guests-row">
+            <label><span>${adultsLabel}</span><input type="number" name="adults" value="2" min="1" max="12" /></label>
+            <label><span>${childrenLabel}</span><input type="number" name="children" value="0" min="0" max="12" /></label>
+            <label><span>${roomsLabel}</span><input type="number" name="rooms" value="1" min="1" max="8" /></label>
+          </div>
+          <div class="hotel-filter-row"><label for="hotel-stay-filter">${filterLabel}</label><select id="hotel-stay-filter">${filterSelect}</select></div>
+          <button class="hotel-search-submit" type="submit">${searchText}</button>
+        </form>
+        <p class="hotel-live-note">${isFrench ? "Suggestions d’inspiration · Tarifs et disponibilités confirmés par NOOR" : "Curated inspiration · Rates and availability confirmed with NOOR"}</p>
+      </div>
+    </section>
+    <div class="hotel-page-content">
+      <section class="hotel-offers-section" aria-labelledby="hotel-offers-title"><div class="hotel-section-heading"><div><span>${isFrench ? "LES AVANTAGES NOOR" : "A LITTLE MORE WITH NOOR"}</span><h2 id="hotel-offers-title">${isFrench ? "Mes offres" : "My offers"}<i>.</i></h2></div><button class="hotel-show-all" type="button" data-open-planner data-service="Hotel offers" data-fr-service="Offres hôtels">${isFrench ? "Tout découvrir" : "Show all"} <span>›</span></button></div><div class="hotel-offers-grid">${offerCards}</div></section>
+      <section class="hotel-confidence" aria-label="${escapeHtml(confidenceTitle)}"><h2>${escapeHtml(confidenceTitle)}</h2><div class="hotel-confidence-grid">${confidenceCards}</div></section>
+      <p class="hotel-search-status" id="hotel-search-status" aria-live="polite">${statusText}</p>
+      <p class="hotel-no-results" id="hotel-no-results" hidden>${emptyText}</p>
+      ${sections}
+      <section class="hotel-footer-cta"><div><span>${isFrench ? "VOTRE PROCHAIN SÉJOUR" : "YOUR NEXT STAY"}</span><h2>${isFrench ? "Trouvons l’adresse qui vous correspond." : "Let’s find a stay that feels right."}</h2></div><button type="button" data-open-planner data-service="Hotel stay" data-fr-service="Séjour à l’hôtel">${options} <span>↗</span></button></section>
+    </div>
+  </div>`;
+}
+
 function renderStoryPage(story) {
   const [location, title, description, image, alt] = story[language];
   const service = servicePages[story.service][language].title;
@@ -172,7 +300,7 @@ function renderStoryPage(story) {
 function renderActivePage() {
   if (!activePageId) return;
   const story = stories[activePageId];
-  serviceView.innerHTML = story ? renderStoryPage(story) : renderServicePage(servicePages[activePageId] || servicePages.inspiration);
+  serviceView.innerHTML = activePageId === "hotels" ? renderHotelPage() : story ? renderStoryPage(story) : renderServicePage(servicePages[activePageId] || servicePages.inspiration);
   serviceView.querySelector(".service-back")?.addEventListener("click", closeServicePage);
   serviceView.querySelectorAll("[data-open-service]").forEach((button) => button.addEventListener("click", () => openServicePage(button.dataset.openService)));
   serviceView.querySelectorAll("[data-open-planner]").forEach((button) => button.addEventListener("click", () => openPlanner(button.dataset.service, button.dataset.frService)));
@@ -188,6 +316,38 @@ function renderActivePage() {
     const empty = serviceView.querySelector(".service-empty");
     if (empty) empty.hidden = visibleCount > 0;
   });
+  serviceView.querySelector("#hotel-search-form")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const query = serviceView.querySelector("#hotel-destination").value.trim().toLocaleLowerCase(language);
+    const kind = serviceView.querySelector("#hotel-stay-filter").value;
+    let visibleCount = 0;
+    serviceView.querySelectorAll(".hotel-content-card").forEach((card) => {
+      const matchesQuery = !query || card.dataset.hotelText.includes(query);
+      const matchesKind = kind === "all" || card.dataset.hotelKind === kind;
+      card.hidden = !(matchesQuery && matchesKind);
+      if (!card.hidden) visibleCount += 1;
+    });
+    serviceView.querySelectorAll("[data-hotel-carousel-section]").forEach((section) => {
+      section.hidden = !section.querySelector(".hotel-content-card:not([hidden])");
+    });
+    const status = serviceView.querySelector("#hotel-search-status");
+    const empty = serviceView.querySelector("#hotel-no-results");
+    if (empty) empty.hidden = visibleCount > 0;
+    if (status) status.textContent = query || kind !== "all"
+      ? visibleCount
+        ? (language === "fr" ? `${visibleCount} idées correspondent à vos critères. ${statusTextForHotel()}` : `${visibleCount} ideas match your search. ${statusTextForHotel()}`)
+        : ""
+      : statusTextForHotel();
+    if (visibleCount) serviceView.querySelector("[data-hotel-carousel-section]:not([hidden])")?.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  serviceView.querySelectorAll("[data-hotel-scroll]").forEach((button) => button.addEventListener("click", () => {
+    const track = serviceView.querySelector(`#track-${button.dataset.hotelScroll}`);
+    track?.scrollBy({left:Number(button.dataset.direction) * 360,behavior:"smooth"});
+  }));
+}
+
+function statusTextForHotel() {
+  return language === "fr" ? "Les tarifs et disponibilités sont confirmés par NOOR." : "Rates and availability are confirmed with NOOR.";
 }
 
 function openServicePage(id, updateHistory = true) {
