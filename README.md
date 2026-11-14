@@ -4,7 +4,7 @@ A mobile-first travel discovery and trip-request site, published as a static Net
 
 ## Publish
 
-There is no build step. Netlify publishes the repository root (`.`). The trip request uses Netlify Forms and returns to `merci.html`; this site does not include live flight or hotel inventory, instant bookings, or payments.
+There is no build step. Netlify publishes the repository root (`.`). Netlify Forms processing is enabled for the trip request, which returns to `merci.html`; this site does not include live flight or hotel inventory, instant bookings, or payments.
 
 ## Included
 
