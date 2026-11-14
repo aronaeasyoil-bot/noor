@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f5ef" />
+    <meta name="description" content="NOOR imagine vos voyages entre l’Afrique, Dubaï et le monde : séjours, safaris, transferts et escapades sur mesure." />
+    <title>NOOR — Le voyage prend une autre lumière</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="NOOR, accueil"><img class="brand-logo" src="/images/noor-wordmark.jpg" alt="NOOR — Built with Identity" /></a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="#voyages" data-copy="navJourneys">Voyages</a>
+        <a href="#experiences" data-copy="navExperiences">Expériences</a>
+        <a href="#afrique-dubai" data-copy="navAfrica">Afrique · Dubaï</a>
+      </nav>
+      <div class="header-actions">
+        <div class="language-switch" aria-label="Choisir la langue">
+          <button type="button" class="language-button is-active" data-language="fr">FR</button>
+          <button type="button" class="language-button" data-language="en">EN</button>
+          <button type="button" class="language-button" data-language="ar">ع</button>
+        </div>
+        <a class="header-cta" href="#demande" data-copy="planTrip">Planifier un voyage <span>↗</span></a>
+      </div>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-photo" role="img" aria-label="Dubaï et les dunes du désert au coucher du soleil"></div>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow light"><span class="eyebrow-line"></span><span data-copy="heroEyebrow">VOTRE PROCHAINE HISTOIRE COMMENCE ICI</span></p>
+          <h1 id="hero-title" data-copy="heroTitle">Le voyage prend<br />une autre <em>lumière.</em></h1>
+          <p class="hero-description" data-copy="heroText">De l’Afrique à Dubaï, et partout où vos envies vous portent. Nous imaginons des voyages qui vous ressemblent.</p>
+          <a class="button button-light" href="#demande"><span data-copy="discover">Imaginer mon voyage</span><span class="button-arrow">↗</span></a>
+        </div>
+        <div class="hero-signature"><span class="signature-star">✳</span><span data-copy="signature">Des voyages pensés pour vous</span></div>
+        <div class="hero-index"><span>01</span><i></i><span>03</span></div>
+      </section>
+
+      <section class="search-wrap" aria-label="Demande de voyage">
+        <div class="search-card">
+          <div class="search-intro">
+            <span class="small-label" data-copy="searchLabel">COMMENÇONS PAR VOTRE ENVIE</span>
+            <h2 data-copy="searchTitle">Où vous emmène<br />votre prochain voyage ?</h2>
+          </div>
+          <form name="travel-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="search-form">
+            <input type="hidden" name="form-name" value="travel-request" />
+            <p class="hidden-field"><label>Ne pas remplir : <input name="bot-field" /></label></p>
+            <label class="field destination-field"><span data-copy="destination">Destination</span><div class="input-icon"><span class="pin">⌖</span><input name="destination" required placeholder="Dubaï, Marrakech…" /></div></label>
+            <label class="field"><span data-copy="departure">Départ souhaité</span><input name="departure-date" type="date" /></label>
+            <label class="field"><span data-copy="travelers">Voyageurs</span><select name="travelers"><option>1 voyageur</option><option>2 voyageurs</option><option>3–4 voyageurs</option><option>5+ voyageurs</option></select></label>
+            <button class="search-submit" type="submit" aria-label="Envoyer ma demande">↗</button>
+          </form>
+          <p class="form-note"><span class="note-sparkle">✳</span><span data-copy="searchNote">Une envie précise ? Notre équipe crée votre itinéraire sur mesure.</span><a href="#demande" data-copy="talkUs">Parlons-en</a></p>
+        </div>
+      </section>
+
+      <section class="section journeys" id="voyages">
+        <div class="section-heading">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span><span data-copy="journeyEyebrow">SÉLECTION NOOR</span></p><h2 data-copy="journeyTitle">Des horizons qui<br /><em>donnent envie de partir.</em></h2></div>
+          <p class="section-intro" data-copy="journeyIntro">Quelques idées pour vous inspirer. Chaque détail s’adapte à votre rythme, vos envies et votre façon de voyager.</p>
+        </div>
+        <div class="journey-grid">
+          <article class="journey-card journey-card-large">
+            <a href="#demande" class="journey-image image-dubai" aria-label="Demander un séjour à Dubaï"><span class="image-tag">01 · CITY ESCAPE</span><span class="image-link">↗</span></a>
+            <div class="journey-meta"><div><h3>Dubaï, autrement</h3><p data-copy="dubaiDescription">L’énergie de la ville, le calme du désert.</p></div><span class="meta-arrow">↗</span></div>
+          </article>
+          <article class="journey-card">
+            <a href="#demande" class="journey-image image-safari" aria-label="Demander un safari dans le désert"><span class="image-tag">02 · DÉSERT & SAFARI</span><span class="image-link">↗</span></a>
+            <div class="journey-meta"><div><h3>Le désert au soleil couchant</h3><p data-copy="safariDescription">Une parenthèse dorée, à votre rythme.</p></div><span class="meta-arrow">↗</span></div>
+          </article>
+          <article class="journey-card">
+            <a href="#demande" class="journey-image image-marina" aria-label="Demander une soirée sur la marina"><span class="image-tag">03 · SOIRÉE SUR L’EAU</span><span class="image-link">↗</span></a>
+            <div class="journey-meta"><div><h3>La marina à la nuit tombée</h3><p data-copy="marinaDescription">Dubaï scintille, le temps ralentit.</p></div><span class="meta-arrow">↗</span></div>
+          </article>
+        </div>
+        <a class="text-link" href="#demande"><span data-copy="allJourneys">Parcourir nos idées de voyage</span><span>↗</span></a>
+      </section>
+
+      <section class="experience-band" id="experiences">
+        <div class="experience-image"></div>
+        <div class="experience-copy">
+          <p class="eyebrow light"><span class="eyebrow-line"></span><span data-copy="experienceEyebrow">PLUS QU’UNE DESTINATION</span></p>
+          <h2 data-copy="experienceTitle">Des moments<br />qui <em>restent.</em></h2>
+          <p data-copy="experienceText">Safari privé, transfert avec chauffeur, hôtel bien choisi ou journée à explorer. On s’occupe de l’ensemble, vous profitez du voyage.</p>
+          <a class="button button-outline" href="#demande"><span data-copy="experienceButton">Découvrir nos expériences</span><span class="button-arrow">↗</span></a>
+        </div>
+        <div class="experience-number">NOOR <span>—</span> 2026</div>
+      </section>
+
+      <section class="services-section">
+        <div class="services-top"><div><p class="eyebrow"><span class="eyebrow-line"></span><span data-copy="servicesEyebrow">VOTRE VOYAGE, EN UN SEUL ENDROIT</span></p><h2 data-copy="servicesTitle">Les bonnes choses<br />se <em>préparent ensemble.</em></h2></div><p data-copy="servicesText">Un conseiller à vos côtés, de la première idée jusqu’au retour. Dites-nous ce qui vous ferait plaisir.</p></div>
+        <div class="services-list">
+          <a class="service-row" href="#demande"><span class="service-number">01</span><span class="service-title" data-copy="serviceFlights">Vols & itinéraires</span><span class="service-caption" data-copy="serviceFlightsText">Des départs qui vous arrangent</span><span class="service-arrow">↗</span></a>
+          <a class="service-row" href="#demande"><span class="service-number">02</span><span class="service-title" data-copy="serviceStays">Séjours & hôtels</span><span class="service-caption" data-copy="serviceStaysText">L’adresse qui change tout</span><span class="service-arrow">↗</span></a>
+          <a class="service-row" href="#demande"><span class="service-number">03</span><span class="service-title" data-copy="serviceTransfers">Transferts privés</span><span class="service-caption" data-copy="serviceTransfersText">Voyagez l’esprit tranquille</span><span class="service-arrow">↗</span></a>
+          <a class="service-row" href="#demande"><span class="service-number">04</span><span class="service-title" data-copy="serviceTailored">Voyages sur mesure</span><span class="service-caption" data-copy="serviceTailoredText">Une idée, un itinéraire unique</span><span class="service-arrow">↗</span></a>
+        </div>
+      </section>
+
+      <section class="africa-section" id="afrique-dubai">
+        <div class="africa-map" aria-hidden="true"><div class="map-orbit orbit-one"></div><div class="map-orbit orbit-two"></div><span class="map-point point-dakar">DAKAR</span><span class="map-point point-abidjan">ABIDJAN</span><span class="map-point point-dubai">DUBAÏ</span><svg viewBox="0 0 500 300" aria-hidden="true"><path d="M90 198 Q260 260 405 97"/><circle cx="90" cy="198" r="5"/><circle cx="405" cy="97" r="5"/></svg><span class="map-plane">✈</span></div>
+        <div class="africa-copy"><p class="eyebrow"><span class="eyebrow-line"></span><span data-copy="africaEyebrow">DES DÉPARTS D’AFRIQUE VERS LE MONDE</span></p><h2 data-copy="africaTitle">De chez vous<br />à <em>Dubaï.</em></h2><p data-copy="africaText">Dakar, Abidjan, Bamako, Conakry et bien d’autres villes. NOOR vous accompagne pour organiser votre séjour, les transferts et les belles découvertes sur place.</p><a href="#demande" class="text-link"><span data-copy="africaButton">Préparer mon départ</span><span>↗</span></a></div>
+      </section>
+
+      <section class="contact-section" id="demande">
+        <div class="contact-copy"><p class="eyebrow light"><span class="eyebrow-line"></span><span data-copy="contactEyebrow">LE PREMIER PAS EST SIMPLE</span></p><h2 data-copy="contactTitle">Parlons de<br />votre <em>prochain départ.</em></h2><p data-copy="contactText">Partagez votre idée, même si elle n’est pas encore très précise. Nous revenons vers vous pour imaginer la suite.</p><span class="contact-email">NOOR <span>✳</span> Travel with intention</span></div>
+        <form name="bespoke-trip" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="contact-form">
+          <input type="hidden" name="form-name" value="bespoke-trip" /><p class="hidden-field"><label>Ne pas remplir : <input name="bot-field" /></label></p>
+          <div class="form-pair"><label><span data-copy="yourName">Votre nom</span><input name="name" autocomplete="name" required placeholder="Prénom et nom" /></label><label><span>Email</span><input name="email" type="email" autocomplete="email" required placeholder="vous@exemple.com" /></label></div>
+          <label><span data-copy="yourIdea">Qu’avez-vous en tête ?</span><textarea name="message" rows="3" required placeholder="Une destination, une date, une envie…"></textarea></label>
+          <div class="contact-submit-row"><p data-copy="formPrivacy">Vos informations restent confidentielles et servent uniquement à donner suite à votre demande.</p><button class="button button-light" type="submit"><span data-copy="sendRequest">Envoyer ma demande</span><span class="button-arrow">↗</span></button></div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#top"><img class="brand-logo" src="/images/noor-wordmark.jpg" alt="NOOR — Built with Identity" /></a>
+      <p data-copy="footerLine">Des voyages pensés avec intention.</p><div class="footer-right"><span>© NOOR 2026</span><a href="#demande" data-copy="sendRequest">NOUS ÉCRIRE ↗</a></div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
