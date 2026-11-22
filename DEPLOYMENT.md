@@ -71,3 +71,25 @@ Call `POST /api/cron/rates` with `Authorization: Bearer $CRON_SECRET` once a day
 ```bash
 E2E_BASE_URL=https://<preview-url> npx playwright test --trace off
 ```
+
+## Workers Builds (Git-connected deployment)
+
+The Worker `noor-travel` is connected to this repository in the Cloudflare dashboard:
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Builds for non-production branches | on (each branch gets a preview URL) |
+| Build command | `npm run cf:build` (runs `scripts/cf-build.mjs`) |
+| Deploy command | `npx opennextjs-cloudflare deploy` |
+| Version command (previews) | `npx opennextjs-cloudflare upload` |
+
+Build variables (Settings → Builds → Variables and secrets), set by the account owner, never committed:
+
+- `DATABASE_URL`: when present, the build applies migrations and the idempotent seed before building.
+- `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`: optional, creates the first super admin once.
+
+Runtime secrets (Settings → Variables and secrets): `DATABASE_URL` again (the Worker reads it at runtime), plus
+Stripe, Resend and Amadeus keys when available.
+
+R2 is not yet enabled on the account; the `DOCUMENTS` binding stays commented out in `wrangler.jsonc` until it is.
