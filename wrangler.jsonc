@@ -11,8 +11,9 @@
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://noor-travel.workers.dev"
   },
-  // Private bucket for visa documents (never public).
-  "r2_buckets": [{ "binding": "DOCUMENTS", "bucket_name": "noor-documents" }],
+  // Private bucket for visa documents (never public). Enable R2 on the account, create the bucket
+  // "noor-documents", then uncomment. Until then, visa forms accept applications without uploads.
+  // "r2_buckets": [{ "binding": "DOCUMENTS", "bucket_name": "noor-documents" }],
   // Recommended in production: put PostgreSQL behind Hyperdrive and uncomment (the app uses it automatically).
   // "hyperdrive": [{ "binding": "HYPERDRIVE", "id": "<hyperdrive-config-id>" }],
   "env": {

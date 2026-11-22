@@ -14,7 +14,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/migrate.mjs",
     "db:seed": "tsx --tsconfig tsconfig.json scripts/seed.ts",
-    "cf:build": "opennextjs-cloudflare build",
+    "cf:build": "node scripts/cf-build.mjs",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },

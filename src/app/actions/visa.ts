@@ -7,7 +7,7 @@ import { notifications, visaApplications, visaDocuments } from "@/lib/db/schema"
 import { getCurrentUser } from "@/lib/auth/session";
 import { makeReference } from "@/lib/references";
 import { isLocale } from "@/lib/i18n/config";
-import { putPrivate, sniffType } from "@/lib/storage";
+import { putPrivate, sniffType, storageConfigured } from "@/lib/storage";
 import { rateLimit } from "@/lib/rate-limit";
 import { opsEmail, sendEmail } from "@/lib/email";
 
@@ -49,6 +49,7 @@ export async function submitVisaAction(_: VisaState, fd: FormData): Promise<Visa
     }
   }
   if (files.length > 12) return { error: "file" };
+  if (files.length > 0 && !(await storageConfigured())) return { error: "unavailable" };
 
   const db = await getDb();
   if (!db) return { error: "unavailable" };
