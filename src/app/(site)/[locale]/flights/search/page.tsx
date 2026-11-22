@@ -89,11 +89,19 @@ export default async function FlightSearchPage({ params, searchParams }: { param
           <FlightResults
             locale={locale}
             offers={result.items}
-            testMode={!!supplier?.testMode || result.items.some((o) => !o.live)}
             fares={dict.supplier.fares}
             flightLabel={s.flight}
             cabinLabel={s.cabins[q.cabin]}
             travellers={q.adults + q.children + q.infants}
+            travellersText={[
+              [q.adults, s.adults],
+              [q.children, s.children],
+              [q.infants, s.infants],
+            ]
+              .filter(([n]) => Number(n) > 0)
+              .map(([n, l]) => `${n} ${l}`)
+              .join(" · ")}
+            searchRows={rows}
             searchMessage={message}
             searchContext={searchContext}
             quote={quote}

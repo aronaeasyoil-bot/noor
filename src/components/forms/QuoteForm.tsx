@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useRef } from "react";
 import { submitQuoteAction, type FormState } from "@/app/actions/commerce";
 import { whatsappLink } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/icons";
@@ -27,18 +27,27 @@ type Props = {
   defaultTravellers?: number;
   defaultDate?: string;
   defaultReturn?: string;
+  /** Builds the WhatsApp text sent after submission, with the reference and the customer's details. */
+  whatsappOnSuccess?: (v: { reference: string; name: string; email: string; phone: string; message: string; travellers: string }) => string;
+  successWhatsappHint?: string;
+  /** Hide the WhatsApp button before submission (the message is only complete once the request has a reference). */
+  whatsappAfterSubmitOnly?: boolean;
 };
 
 /** Every service without a live supplier is sold through this form; requests land in admin › Quote requests. */
-export function QuoteForm({ locale, q, c, rateLimited, services, defaultService, context, defaultMessage, whatsappPrefill, user, compact, whatsappMessage, whatsappLabel, submitLabel, defaultTravellers, defaultDate, defaultReturn }: Props) {
+export function QuoteForm({ locale, q, c, rateLimited, services, defaultService, context, defaultMessage, whatsappPrefill, user, compact, whatsappMessage, whatsappLabel, submitLabel, defaultTravellers, defaultDate, defaultReturn, whatsappOnSuccess, successWhatsappHint, whatsappAfterSubmitOnly }: Props) {
   const [state, action, pending] = useActionState<FormState, FormData>(submitQuoteAction, {});
   const fe = state.fieldErrors ?? {};
+  const sent = useRef({ name: "", email: "", phone: "", message: "", travellers: "" });
   if (state.ok && state.reference) {
+    const v = sent.current;
+    const waText = whatsappOnSuccess ? whatsappOnSuccess({ reference: state.reference, ...v }) : `${whatsappMessage ?? whatsappPrefill}\n\nRef: ${state.reference}`;
     return (
       <div role="status" className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5" data-testid="quote-success">
         <p className="text-lg font-extrabold text-emerald-900">{q.success}</p>
         <p className="mt-1 text-emerald-900">{q.successBody.replace("{ref}", state.reference)}</p>
-        <a className="btn btn-whatsapp mt-4" href={whatsappLink(`${whatsappMessage ?? whatsappPrefill}\n\nRef: ${state.reference}`)} target="_blank" rel="noopener noreferrer">
+        {successWhatsappHint && <p className="mt-3 text-sm font-semibold text-emerald-900">{successWhatsappHint}</p>}
+        <a className="btn btn-whatsapp mt-4 w-full whitespace-normal text-center" href={whatsappLink(waText)} target="_blank" rel="noopener noreferrer" data-testid="quote-success-whatsapp">
           <WhatsAppIcon size={18} /> {whatsappLabel ?? c.whatsappUs}
         </a>
       </div>
@@ -46,7 +55,16 @@ export function QuoteForm({ locale, q, c, rateLimited, services, defaultService,
   }
   const err = (k: string) => (fe[k] ? <p className="mt-1 text-xs font-semibold text-noor-red">{c.required}</p> : null);
   return (
-    <form action={action} className="grid grid-cols-1 gap-4" data-testid="quote-form">
+    <form
+      action={action}
+      onSubmit={(e) => {
+        const f = new FormData(e.currentTarget);
+        const g = (k: string) => String(f.get(k) ?? "").trim();
+        sent.current = { name: g("name"), email: g("email"), phone: g("phone"), message: g("message"), travellers: g("travellers") };
+      }}
+      className="grid grid-cols-1 gap-4"
+      data-testid="quote-form"
+    >
       <input type="hidden" name="locale" value={locale} />
       {context && <input type="hidden" name="context" value={JSON.stringify(context)} />}
       <div className="hidden" aria-hidden="true">
@@ -112,9 +130,11 @@ export function QuoteForm({ locale, q, c, rateLimited, services, defaultService,
         <button className="btn btn-primary" disabled={pending} data-testid="quote-submit">
           {pending ? c.loading : (submitLabel ?? q.submit)}
         </button>
+        {!whatsappAfterSubmitOnly && (
         <a className="btn btn-whatsapp" href={whatsappLink(whatsappMessage ?? whatsappPrefill)} target="_blank" rel="noopener noreferrer" data-testid="quote-whatsapp">
           <WhatsAppIcon size={18} /> {whatsappLabel ?? c.whatsappUs}
         </a>
+        )}
       </div>
     </form>
   );

@@ -7,6 +7,7 @@ import type { Dictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n/config";
 import { fill, formatDate, formatMoney } from "@/lib/format";
 import { QuoteForm } from "@/components/forms/QuoteForm";
+import { airportLabel } from "@/lib/airports";
 
 type Fares = Dictionary["supplier"]["fares"];
 type QuoteProps = Omit<ComponentProps<typeof QuoteForm>, "context" | "defaultMessage" | "whatsappMessage">;
@@ -14,11 +15,14 @@ type QuoteProps = Omit<ComponentProps<typeof QuoteForm>, "context" | "defaultMes
 type Props = {
   locale: Locale;
   offers: FlightOffer[];
-  testMode: boolean;
   fares: Fares;
   flightLabel: string;
   cabinLabel: string;
   travellers: number;
+  /** e.g. "2 adults · 1 child", for the WhatsApp message. */
+  travellersText: string;
+  /** Rows describing the search ([label, value]), used in the WhatsApp message when no flight is chosen. */
+  searchRows: [string, string][];
   /** Text describing the search, used when no flight is chosen. */
   searchMessage: string;
   searchContext: Record<string, unknown>;
@@ -65,7 +69,7 @@ export function offerSummary(o: FlightOffer, p: { locale: Locale; fares: Fares; 
   return lines.join("\n");
 }
 
-export function FlightResults({ locale, offers, testMode, fares: f, flightLabel, cabinLabel, travellers, searchMessage, searchContext, quote, requestTitle }: Props) {
+export function FlightResults({ locale, offers, fares: f, flightLabel, cabinLabel, travellers, travellersText, searchRows, searchMessage, searchContext, quote, requestTitle }: Props) {
   const [sort, setSort] = useState<"price" | "time">("price");
   const [airline, setAirline] = useState<string | null>(null);
   const [chosen, setChosen] = useState<FlightOffer | null>(null);
@@ -105,6 +109,38 @@ export function FlightResults({ locale, offers, testMode, fares: f, flightLabel,
       }
     : searchContext;
 
+  /** Clear, structured WhatsApp text for NOOR: reference, customer, then the flight (WhatsApp renders *bold*). */
+  function whatsappText(v: { reference: string; name: string; email: string; phone: string; message: string }) {
+    const w = f.wa;
+    const out: string[] = [`*${chosen ? w.title : w.searchTitle}*`, `${w.reference} : *${v.reference}*`, "", `*${w.client}*`, `${w.name} : ${v.name}`];
+    if (v.phone) out.push(`${w.phone} : ${v.phone}`);
+    out.push(`${w.email} : ${v.email}`, "");
+    if (chosen) {
+      const o = chosen;
+      out.push(`*${w.flight}*`, `${w.airline} : ${o.airline.name}${o.fareName ? ` (${o.fareName})` : ""}`, `${w.cabin} : ${cabinLabel}`);
+      o.slices.forEach((sl, i) => {
+        const plus = dayDiff(sl.departAt, sl.arriveAt);
+        if (o.slices.length > 1) out.push("", `_${flightLabel} ${i + 1}_`);
+        out.push(
+          `${w.route} : ${airportLabel(sl.from)} → ${airportLabel(sl.to)}`,
+          `${w.date} : ${formatDate(sl.departAt.slice(0, 10), locale, { dateStyle: "full" })}`,
+          `${fill(w.times, { d: hhmm(sl.departAt), a: `${hhmm(sl.arriveAt)}${plus > 0 ? ` (+${plus})` : ""}` })}`,
+          `${w.numbers} : ${sl.segments.map((g) => g.flightNumber).join(" + ")} · ${stopsLabel(sl, f)}`,
+        );
+        if (sl.durationMin != null) out.push(`${w.duration} : ${duration(sl.durationMin)}`);
+      });
+      const cond = [o.refundable == null ? null : o.refundable ? f.refundable : f.nonRefundable, o.changeable ? f.changeable : null].filter(Boolean).join(", ");
+      out.push("", `${w.travellers} : ${travellersText}`, `${w.baggage} : ${baggageLabel(o, f)}`);
+      if (cond) out.push(`${w.conditions} : ${cond}`);
+      out.push(`${w.price} : *${formatMoney(o.totalMinor, o.currency, locale)}* (${fill(f.totalFor, { n: travellers })})`);
+    } else {
+      out.push(`*${w.search}*`, ...searchRows.map(([k, val]) => `${k} : ${val}`));
+    }
+    const extra = v.message.trim();
+    if (extra && extra !== message.trim()) out.push("", `*${w.notes}*`, extra);
+    return out.join("\n");
+  }
+
   function choose(o: FlightOffer) {
     setChosen(o);
     requestAnimationFrame(() => document.getElementById("request")?.scrollIntoView({ behavior: "smooth", block: "start" }));
@@ -113,11 +149,6 @@ export function FlightResults({ locale, offers, testMode, fares: f, flightLabel,
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
       <div className="min-w-0 space-y-4">
-        {testMode && (
-          <p role="note" className="rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm font-semibold text-amber-900" data-testid="fares-test-mode">
-            {f.testMode}
-          </p>
-        )}
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-lg font-extrabold" data-testid="fares-title">
             {fill(f.title, { n: offers.length, m: airlines.length })}
@@ -234,8 +265,10 @@ export function FlightResults({ locale, offers, testMode, fares: f, flightLabel,
           {...quote}
           context={context}
           defaultMessage={message}
-          whatsappMessage={chosenText ? `${f.whatsappIntro}\n${chosenText}` : undefined}
-          whatsappLabel={chosen ? f.whatsappSend : undefined}
+          whatsappAfterSubmitOnly
+          whatsappOnSuccess={whatsappText}
+          whatsappLabel={f.wa.successCta}
+          successWhatsappHint={f.wa.successHint}
           submitLabel={chosen ? f.requestTitle : undefined}
         />
       </aside>
