@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
     loaderFile: "./src/lib/image-loader.ts",
     remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
-  serverExternalPackages: [],
+  serverExternalPackages: ["postgres"], // lets OpenNext pick the package's "workerd" build (cloudflare:sockets)
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
