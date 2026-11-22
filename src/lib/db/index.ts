@@ -11,8 +11,9 @@ async function connectionString(): Promise<string | null> {
   try {
     const { getCloudflareContext } = await import("@opennextjs/cloudflare");
     const ctx = await getCloudflareContext({ async: true });
-    const hyperdrive = (ctx.env as { HYPERDRIVE?: { connectionString: string } }).HYPERDRIVE;
-    if (hyperdrive?.connectionString) return hyperdrive.connectionString;
+    const env = ctx.env as { HYPERDRIVE?: { connectionString: string }; DATABASE_URL?: string };
+    if (env.HYPERDRIVE?.connectionString) return env.HYPERDRIVE.connectionString;
+    if (env.DATABASE_URL) return env.DATABASE_URL;
   } catch {
     // Not running on Cloudflare (local Node.js, tests).
   }
