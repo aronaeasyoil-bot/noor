@@ -1,0 +1,12 @@
+import Link from "next/link";
+
+/** Locale-agnostic 404 (not-found pages do not receive params). */
+export default function NotFound() {
+  return (
+    <div className="container-noor py-20 text-center">
+      <p className="text-6xl font-extrabold text-noor-red">404</p>
+      <h1 className="mt-3 text-2xl font-extrabold">Page not found · Page introuvable · الصفحة غير موجودة</h1>
+      <Link href="/" className="btn btn-primary mt-6">NOOR</Link>
+    </div>
+  );
+}
