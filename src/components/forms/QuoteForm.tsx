@@ -20,10 +20,17 @@ type Props = {
   whatsappPrefill: string;
   user?: { name: string; email: string; phone: string | null } | null;
   compact?: boolean;
+  /** Full WhatsApp text (e.g. the chosen flight). Defaults to the generic prefill. */
+  whatsappMessage?: string;
+  whatsappLabel?: string;
+  submitLabel?: string;
+  defaultTravellers?: number;
+  defaultDate?: string;
+  defaultReturn?: string;
 };
 
 /** Every service without a live supplier is sold through this form; requests land in admin › Quote requests. */
-export function QuoteForm({ locale, q, c, rateLimited, services, defaultService, context, defaultMessage, whatsappPrefill, user, compact }: Props) {
+export function QuoteForm({ locale, q, c, rateLimited, services, defaultService, context, defaultMessage, whatsappPrefill, user, compact, whatsappMessage, whatsappLabel, submitLabel, defaultTravellers, defaultDate, defaultReturn }: Props) {
   const [state, action, pending] = useActionState<FormState, FormData>(submitQuoteAction, {});
   const fe = state.fieldErrors ?? {};
   if (state.ok && state.reference) {
@@ -31,8 +38,8 @@ export function QuoteForm({ locale, q, c, rateLimited, services, defaultService,
       <div role="status" className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5" data-testid="quote-success">
         <p className="text-lg font-extrabold text-emerald-900">{q.success}</p>
         <p className="mt-1 text-emerald-900">{q.successBody.replace("{ref}", state.reference)}</p>
-        <a className="btn btn-whatsapp mt-4" href={whatsappLink(`${whatsappPrefill} (${state.reference})`)} target="_blank" rel="noopener noreferrer">
-          <WhatsAppIcon size={18} /> {c.whatsappUs}
+        <a className="btn btn-whatsapp mt-4" href={whatsappLink(`${whatsappMessage ?? whatsappPrefill}\n\nRef: ${state.reference}`)} target="_blank" rel="noopener noreferrer">
+          <WhatsAppIcon size={18} /> {whatsappLabel ?? c.whatsappUs}
         </a>
       </div>
     );
@@ -72,15 +79,15 @@ export function QuoteForm({ locale, q, c, rateLimited, services, defaultService,
         </div>
         <div>
           <label className="field-label" htmlFor="q-travellers">{q.travellers}</label>
-          <input id="q-travellers" name="travellers" type="number" min={1} max={500} className="field" defaultValue={2} />
+          <input id="q-travellers" name="travellers" type="number" min={1} max={500} className="field" defaultValue={defaultTravellers ?? 2} />
         </div>
         <div>
           <label className="field-label" htmlFor="q-date">{q.travelDate}</label>
-          <input id="q-date" name="travelDate" type="date" className="field" />
+          <input id="q-date" name="travelDate" type="date" className="field" defaultValue={defaultDate} />
         </div>
         <div>
           <label className="field-label" htmlFor="q-return">{q.returnDate}</label>
-          <input id="q-return" name="returnDate" type="date" className="field" />
+          <input id="q-return" name="returnDate" type="date" className="field" defaultValue={defaultReturn} />
         </div>
         <div className={compact ? "" : "sm:col-span-2"}>
           <label className="field-label" htmlFor="q-budget">{q.budget}</label>
@@ -103,10 +110,10 @@ export function QuoteForm({ locale, q, c, rateLimited, services, defaultService,
       )}
       <div className={`flex flex-col gap-3 ${compact ? "" : "sm:flex-row"}`}>
         <button className="btn btn-primary" disabled={pending} data-testid="quote-submit">
-          {pending ? c.loading : q.submit}
+          {pending ? c.loading : (submitLabel ?? q.submit)}
         </button>
-        <a className="btn btn-whatsapp" href={whatsappLink(whatsappPrefill)} target="_blank" rel="noopener noreferrer">
-          <WhatsAppIcon size={18} /> {c.whatsappUs}
+        <a className="btn btn-whatsapp" href={whatsappLink(whatsappMessage ?? whatsappPrefill)} target="_blank" rel="noopener noreferrer" data-testid="quote-whatsapp">
+          <WhatsAppIcon size={18} /> {whatsappLabel ?? c.whatsappUs}
         </a>
       </div>
     </form>

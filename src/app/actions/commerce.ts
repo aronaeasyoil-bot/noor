@@ -48,7 +48,7 @@ const quoteSchema = z.object({
   budget: z.string().trim().max(60).optional(),
   message: z.string().trim().min(5).max(4000),
   consent: z.literal("on"),
-  context: z.string().max(4000).optional(),
+  context: z.string().max(8000).optional(),
 });
 
 /** Every service without a live supplier ends here: the request is stored and shown in admin › Quote requests. */

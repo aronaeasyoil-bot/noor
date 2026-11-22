@@ -4,7 +4,7 @@ import type { Locale } from "@/lib/i18n/config";
 
 /** Options of the quote form's "service" field. Values are stable keys stored with the request. */
 export function serviceOptions(locale: Locale, d: Dictionary): { value: string; label: string }[] {
-  return [
+  const all = [
     { value: "flights", label: d.nav.flights },
     { value: "hotels", label: d.nav.hotels },
     { value: "flight-hotel", label: d.nav.flightHotel },
@@ -17,4 +17,6 @@ export function serviceOptions(locale: Locale, d: Dictionary): { value: string; 
     ...services.map((s) => ({ value: s.slug, label: s.title[locale] })),
     { value: "other", label: d.nav.more },
   ];
+  // Some catalogue slugs repeat the core services (e.g. flight-hotel): keep the first entry only.
+  return all.filter((o, i) => all.findIndex((x) => x.value === o.value) === i);
 }

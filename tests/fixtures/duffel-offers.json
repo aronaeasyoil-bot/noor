@@ -1,0 +1,66 @@
+{
+  "data": {
+    "live_mode": false,
+    "offers": [
+      {
+        "id": "off_test_2",
+        "live_mode": false,
+        "total_amount": "612.40",
+        "total_currency": "USD",
+        "expires_at": "2027-01-01T10:00:00Z",
+        "owner": { "name": "Duffel Airways", "iata_code": "ZZ", "logo_symbol_url": null },
+        "conditions": { "refund_before_departure": { "allowed": false }, "change_before_departure": { "allowed": true } },
+        "slices": [
+          {
+            "origin": { "iata_code": "DSS" },
+            "destination": { "iata_code": "DXB" },
+            "duration": "PT11H20M",
+            "segments": [
+              {
+                "origin": { "iata_code": "DSS" }, "destination": { "iata_code": "CMN" },
+                "departing_at": "2027-01-15T22:10:00", "arriving_at": "2027-01-16T02:05:00", "duration": "PT3H55M",
+                "marketing_carrier": { "name": "Duffel Airways", "iata_code": "ZZ" },
+                "operating_carrier": { "name": "Duffel Airways", "iata_code": "ZZ" },
+                "marketing_carrier_flight_number": "0101",
+                "passengers": [{ "cabin_class_marketing_name": "Economy Light", "baggages": [{ "type": "carry_on", "quantity": 1 }] }]
+              },
+              {
+                "origin": { "iata_code": "CMN" }, "destination": { "iata_code": "DXB" },
+                "departing_at": "2027-01-16T04:00:00", "arriving_at": "2027-01-16T13:30:00", "duration": "PT6H30M",
+                "marketing_carrier": { "name": "Duffel Airways", "iata_code": "ZZ" },
+                "operating_carrier": { "name": "Duffel Airways", "iata_code": "ZZ" },
+                "marketing_carrier_flight_number": "0102",
+                "passengers": [{ "baggages": [{ "type": "carry_on", "quantity": 1 }] }]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "off_test_1",
+        "live_mode": false,
+        "total_amount": "845.00",
+        "total_currency": "USD",
+        "owner": { "name": "Test Air", "iata_code": "TA", "logo_symbol_url": null },
+        "conditions": { "refund_before_departure": { "allowed": true }, "change_before_departure": null },
+        "slices": [
+          {
+            "origin": { "iata_code": "DSS" },
+            "destination": { "iata_code": "DXB" },
+            "duration": "PT8H",
+            "segments": [
+              {
+                "origin": { "iata_code": "DSS" }, "destination": { "iata_code": "DXB" },
+                "departing_at": "2027-01-15T09:00:00", "arriving_at": "2027-01-15T21:00:00", "duration": "PT8H",
+                "marketing_carrier": { "name": "Test Air", "iata_code": "TA" },
+                "operating_carrier": { "name": "Partner Air", "iata_code": "PA" },
+                "marketing_carrier_flight_number": "77",
+                "passengers": [{ "cabin_class_marketing_name": "Economy", "baggages": [{ "type": "checked", "quantity": 2 }, { "type": "carry_on", "quantity": 1 }] }]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
