@@ -29,6 +29,7 @@ export default async function CarSearchPage({ params, searchParams }: { params: 
       rows={rows}
       notice={dict.supplier.carsNotConnected}
       service="cars"
+      waTitle={dict.supplier.fares.wa.carTitle}
       context={r.success ? { type: "cars", ...r.data } : {}}
     />
   );

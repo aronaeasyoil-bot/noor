@@ -24,6 +24,8 @@ export async function RequestResults({
   notice,
   service,
   context,
+  waTitle,
+  children,
 }: {
   locale: Locale;
   dict: Dictionary;
@@ -34,6 +36,10 @@ export async function RequestResults({
   notice: string;
   service: string;
   context: Record<string, unknown>;
+  /** Title of the WhatsApp message NOOR receives (e.g. "NEW HOTEL REQUEST – NOOR"). */
+  waTitle?: string;
+  /** Extra content shown above the request form (e.g. live hotel results). */
+  children?: React.ReactNode;
 }) {
   const today = todayInDubai();
   if (issues) {
@@ -56,7 +62,7 @@ export async function RequestResults({
       <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_380px]">
         <div className="min-w-0 space-y-4">
           <SearchSummary title={dict.supplier.searchSummary} rows={rows} />
-          <SupplierNotice title={dict.supplier.notConnectedTitle} body={notice} />
+          {children ?? <SupplierNotice title={dict.supplier.notConnectedTitle} body={notice} />}
         </div>
         <aside id="request" className="card h-fit min-w-0 p-5">
           <h2 className="mb-3 text-lg font-extrabold">{dict.supplier.sendSearch}</h2>
@@ -72,6 +78,11 @@ export async function RequestResults({
             defaultMessage={rows.map(([k, v]) => `${k}: ${v}`).join("\n")}
             whatsappPrefill={dict.whatsapp.prefill}
             user={user}
+            whatsappAfterSubmitOnly
+            waLabels={dict.supplier.fares.wa}
+            waTitle={waTitle}
+            whatsappLabel={dict.supplier.fares.wa.successCta}
+            successWhatsappHint={dict.supplier.fares.wa.successHint}
           />
         </aside>
       </div>

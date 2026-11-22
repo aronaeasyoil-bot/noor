@@ -120,7 +120,7 @@ export default async function FlightSearchPage({ params, searchParams }: { param
             </div>
             <aside id="request" className="card h-fit min-w-0 p-5">
               <h2 className="mb-3 text-lg font-extrabold">{dict.supplier.sendSearch}</h2>
-              <QuoteForm {...quote} context={searchContext} defaultMessage={message} />
+              <QuoteForm {...quote} context={searchContext} defaultMessage={message} whatsappAfterSubmitOnly waLabels={dict.supplier.fares.wa} waTitle={dict.supplier.fares.wa.searchTitle} whatsappLabel={dict.supplier.fares.wa.successCta} successWhatsappHint={dict.supplier.fares.wa.successHint} />
             </aside>
           </div>
         )}

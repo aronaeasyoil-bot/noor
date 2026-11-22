@@ -32,16 +32,35 @@ type Props = {
   successWhatsappHint?: string;
   /** Hide the WhatsApp button before submission (the message is only complete once the request has a reference). */
   whatsappAfterSubmitOnly?: boolean;
+  /** Labels for the structured WhatsApp message built after submission when no custom builder is given. */
+  waLabels?: Dictionary["supplier"]["fares"]["wa"];
+  waTitle?: string;
 };
 
+type Sent = { name: string; email: string; phone: string; message: string; travellers: string; service: string };
+
+/** Structured WhatsApp text: title, reference, customer, service and the request details. */
+export function genericWhatsapp(w: Dictionary["supplier"]["fares"]["wa"], title: string, reference: string, v: Sent, serviceLabel: string) {
+  const out = [`*${title}*`, `${w.reference} : *${reference}*`, "", `*${w.client}*`, `${w.name} : ${v.name}`];
+  if (v.phone) out.push(`${w.phone} : ${v.phone}`);
+  out.push(`${w.email} : ${v.email}`, "", `${w.service} : ${serviceLabel}`);
+  if (v.travellers) out.push(`${w.travellers} : ${v.travellers}`);
+  if (v.message) out.push("", `*${w.details}*`, v.message);
+  return out.join("\n");
+}
+
 /** Every service without a live supplier is sold through this form; requests land in admin › Quote requests. */
-export function QuoteForm({ locale, q, c, rateLimited, services, defaultService, context, defaultMessage, whatsappPrefill, user, compact, whatsappMessage, whatsappLabel, submitLabel, defaultTravellers, defaultDate, defaultReturn, whatsappOnSuccess, successWhatsappHint, whatsappAfterSubmitOnly }: Props) {
+export function QuoteForm({ locale, q, c, rateLimited, services, defaultService, context, defaultMessage, whatsappPrefill, user, compact, whatsappMessage, whatsappLabel, submitLabel, defaultTravellers, defaultDate, defaultReturn, whatsappOnSuccess, successWhatsappHint, whatsappAfterSubmitOnly, waLabels, waTitle }: Props) {
   const [state, action, pending] = useActionState<FormState, FormData>(submitQuoteAction, {});
   const fe = state.fieldErrors ?? {};
-  const sent = useRef({ name: "", email: "", phone: "", message: "", travellers: "" });
+  const sent = useRef<Sent>({ name: "", email: "", phone: "", message: "", travellers: "", service: "" });
   if (state.ok && state.reference) {
     const v = sent.current;
-    const waText = whatsappOnSuccess ? whatsappOnSuccess({ reference: state.reference, ...v }) : `${whatsappMessage ?? whatsappPrefill}\n\nRef: ${state.reference}`;
+    const waText = whatsappOnSuccess
+      ? whatsappOnSuccess({ reference: state.reference, ...v })
+      : waLabels
+        ? genericWhatsapp(waLabels, waTitle ?? waLabels.genericTitle, state.reference, v, services.find((o) => o.value === v.service)?.label ?? v.service)
+        : `${whatsappMessage ?? whatsappPrefill}\n\nRef: ${state.reference}`;
     return (
       <div role="status" className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5" data-testid="quote-success">
         <p className="text-lg font-extrabold text-emerald-900">{q.success}</p>
@@ -60,7 +79,7 @@ export function QuoteForm({ locale, q, c, rateLimited, services, defaultService,
       onSubmit={(e) => {
         const f = new FormData(e.currentTarget);
         const g = (k: string) => String(f.get(k) ?? "").trim();
-        sent.current = { name: g("name"), email: g("email"), phone: g("phone"), message: g("message"), travellers: g("travellers") };
+        sent.current = { name: g("name"), email: g("email"), phone: g("phone"), message: g("message"), travellers: g("travellers"), service: g("service") };
       }}
       className="grid grid-cols-1 gap-4"
       data-testid="quote-form"

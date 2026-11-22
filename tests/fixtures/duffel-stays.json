@@ -1,0 +1,33 @@
+{
+  "data": {
+    "results": [
+      {
+        "id": "srr_test_b",
+        "cheapest_rate_total_amount": "1450.00",
+        "cheapest_rate_currency": "AED",
+        "accommodation": {
+          "id": "acc_test_b",
+          "name": "Test Marina Hotel",
+          "rating": 4,
+          "review_score": 8.6,
+          "review_count": 312,
+          "photos": [],
+          "location": { "address": { "line_one": "Al Marsa Street", "city_name": "Dubai", "country_code": "AE" } }
+        }
+      },
+      {
+        "id": "srr_test_a",
+        "cheapest_rate_total_amount": "980.50",
+        "cheapest_rate_currency": "AED",
+        "accommodation": {
+          "id": "acc_test_a",
+          "name": "Test Creek Inn",
+          "rating": 3,
+          "review_score": null,
+          "photos": [],
+          "location": { "address": { "line_one": "Baniyas Road", "city_name": "Dubai", "country_code": "AE" } }
+        }
+      }
+    ]
+  }
+}
