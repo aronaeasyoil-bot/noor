@@ -6,7 +6,7 @@
 import type { HotelOffer, HotelQuery, HotelSupplier, SupplierResult } from "./types";
 
 /** Known NOOR hotel areas (centre point, search radius). Other places are geocoded with Duffel Places. */
-const AREAS: { match: RegExp; lat: number; lng: number; radiusKm: number; label: string }[] = [
+export const AREAS: { match: RegExp; lat: number; lng: number; radiusKm: number; label: string }[] = [
   { match: /downtown|burj khalifa|dubai mall|وسط/i, lat: 25.1972, lng: 55.2744, radiusKm: 3, label: "Downtown Dubai" },
   { match: /palm|نخلة/i, lat: 25.1124, lng: 55.139, radiusKm: 5, label: "Palm Jumeirah" },
   { match: /marina|jbr|مرسى/i, lat: 25.0805, lng: 55.1403, radiusKm: 3, label: "Dubai Marina & JBR" },

@@ -6,6 +6,7 @@ import "server-only";
  */
 import { DuffelFlights } from "./duffel";
 import { DuffelStays } from "./duffel-stays";
+import { LiteApiHotels } from "./liteapi";
 import type { FlightSupplier, HotelSupplier } from "./types";
 
 export type { FlightOffer, FlightQuery, FlightSlice, FlightSegment, FlightSupplier, HotelOffer, HotelQuery, HotelSupplier, SupplierResult } from "./types";
@@ -21,11 +22,14 @@ export function getFlightSupplier(): (FlightSupplier & { testMode: boolean }) | 
   return new DuffelFlights(token, process.env.DUFFEL_API_URL || undefined); // DUFFEL_API_URL: only for local tests
 }
 
-/** Hotel search (Duffel Stays, same token as flights). Booking stays manual, like flights. */
+/**
+ * Hotel prices: LiteAPI when LITEAPI_KEY is set (self-serve), otherwise Duffel Stays (same token as flights,
+ * needs Stays enabled by Duffel). Booking stays manual, like flights.
+ */
 export function getHotelSupplier(): HotelSupplier | null {
-  const token = process.env.DUFFEL_ACCESS_TOKEN;
-  if (!token) return null;
-  return new DuffelStays(token, process.env.DUFFEL_API_URL || undefined);
+  const duffel = process.env.DUFFEL_ACCESS_TOKEN ? new DuffelStays(process.env.DUFFEL_ACCESS_TOKEN, process.env.DUFFEL_API_URL || undefined) : null;
+  if (process.env.LITEAPI_KEY) return new LiteApiHotels(process.env.LITEAPI_KEY, duffel, process.env.LITEAPI_URL || undefined);
+  return duffel;
 }
 
 /** Live status of every external integration, shown in admin › Suppliers. Never exposes secret values. */
@@ -35,6 +39,7 @@ export function integrationStatus() {
     { key: "flights.duffel", configured: set("DUFFEL_ACCESS_TOKEN"), env: ["DUFFEL_ACCESS_TOKEN"] },
     { key: "flights.sabre", configured: false, env: ["(adapter to build once a Sabre contract exists)"] },
     { key: "flights.travelport", configured: false, env: ["(adapter to build once a Travelport contract exists)"] },
+    { key: "hotels.liteapi", configured: set("LITEAPI_KEY"), env: ["LITEAPI_KEY"] },
     { key: "hotels.duffel-stays", configured: set("DUFFEL_ACCESS_TOKEN"), env: ["DUFFEL_ACCESS_TOKEN (Stays must be enabled on the Duffel account)"] },
     { key: "payments.stripe", configured: set("STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET"), env: ["STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET"] },
     { key: "email.resend", configured: set("RESEND_API_KEY", "EMAIL_FROM"), env: ["RESEND_API_KEY", "EMAIL_FROM", "OPS_EMAIL"] },
