@@ -1,0 +1,26 @@
+{
+  // NOOR Travel & Tours on Cloudflare Workers (Next.js via OpenNext).
+  // Secrets are NEVER written here: set them with `wrangler secret put <NAME>` (see DEPLOYMENT.md).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "noor-travel",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "observability": { "enabled": true },
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://noor-travel.workers.dev"
+  },
+  // Private bucket for visa documents (never public). Enable R2 on the account, create the bucket
+  // "noor-documents", then uncomment. Until then, visa forms accept applications without uploads.
+  // "r2_buckets": [{ "binding": "DOCUMENTS", "bucket_name": "noor-documents" }],
+  // Recommended in production: put PostgreSQL behind Hyperdrive and uncomment (the app uses it automatically).
+  // "hyperdrive": [{ "binding": "HYPERDRIVE", "id": "<hyperdrive-config-id>" }],
+  "env": {
+    "preview": {
+      "name": "noor-travel-preview",
+      "vars": { "NEXT_PUBLIC_SITE_URL": "https://noor-travel-preview.workers.dev" },
+      "r2_buckets": [{ "binding": "DOCUMENTS", "bucket_name": "noor-documents-preview" }]
+    }
+  }
+}

@@ -1,26 +1,53 @@
-# NOOR — Travel, your way
+# NOOR Travel & Tours
 
-A mobile-first travel discovery and trip-request site, published as a static Netlify project. The layout takes cues from familiar travel-booking apps while keeping NOOR’s identity, wording, and locally stored travel photography original.
+**Your World, Your Journey.** International travel and online booking platform of NOOR Travel & Tours (EASYOIL FZE), headquartered in Dubai.
 
-## Publish
+Languages: English, Français, العربية (RTL). Display currencies: AED (billing), USD, EUR, XOF, GBP.
 
-There is no build step. Netlify publishes the repository root (`.`). Netlify Forms processing is enabled for the trip request, which returns to `merci.html`; this site does not include live flight or hotel inventory, instant bookings, or payments.
+## Stack
 
-## Included
+- Next.js 16 (App Router, React 19, strict TypeScript), Tailwind CSS 4
+- PostgreSQL + Drizzle ORM, Zod validation
+- Cloudflare Workers via OpenNext, R2 for private documents, optional Hyperdrive
+- Stripe Checkout (hosted page, signed webhooks) behind a provider interface
+- Vitest (unit) and Playwright (end-to-end)
 
-- Responsive travel-service shortcuts, destination feature, and a two-column editorial inspiration feed.
-- English and French interface copy.
-- Trip-request dialog with service selection, destination, date, traveller count, and contact fields.
-- NOOR logo supplied by the project owner.
-- Local destination photography in `public/images`.
+## What is real and what waits for a supplier
 
-## Photo credits
+| Area | Status |
+|---|---|
+| Accounts (register, sign-in, reset, profile, travellers, favourites, notifications) | working |
+| Desert safaris, activities, transfers, cars | bookable: price and dates set by NOOR in admin; "price on request" until then |
+| Packages and other services | quote requests stored and handled in admin |
+| Flights | search validated; live fares need Amadeus credentials (adapter included). Without them the search is sent to an adviser |
+| Hotels | areas and requests; live inventory needs a hotel supplier contract |
+| Visa assistance | applications with private document upload and status tracking |
+| Payments | Stripe Checkout once keys are set; never stores card numbers |
+| Admin | 16 back-office screens with server-side roles |
 
-- `noor-wordmark.jpg`: NOOR logo supplied by the project owner.
-- `dubai-hero.jpg`: Unsplash photo `photo-1512453979798-5ea266f8880c`.
-- `abu-dhabi-mosque.jpg`: [Mohammed Bukar / Unsplash](https://unsplash.com/photos/white-dome-building-j_5yh3lPvlo).
-- `dubai-island-resort.jpg`: [Michaela J / Unsplash](https://unsplash.com/photos/a-modern-resort-pool-with-palm-trees-at-sunset-PkrQTYRXg-E).
-- `dubai-marina.jpg`: [Anubhav Sonker / Unsplash](https://unsplash.com/photos/a-traditional-dhow-boat-sails-past-illuminated-skyscrapers-at-night-MhnUXgtsiD0).
-- `skydiving-dubai.jpg`: [Akii Patel / Unsplash](https://unsplash.com/photos/two-people-skydiving-over-dubai-s6F4I1zDWrM).
-- `dubai-metro.jpg`: [Dubai Travel Blog / Unsplash](https://unsplash.com/photos/a-silver-train-traveling-down-train-tracks-next-to-tall-buildings-jmApjYAeaEE).
-- `dubai-gold-souk.jpg`: [sarim k / Unsplash](https://unsplash.com/photos/a-display-case-filled-with-lots-of-gold-jewelry-LDdnQwzcC5Y).
+No fictitious price, review, ticket or availability is ever shown.
+
+## Develop
+
+```bash
+npm ci
+cp .env.example .env.local   # fill DATABASE_URL at least
+npm run db:migrate && npm run db:seed
+npm run dev
+```
+
+Tests:
+
+```bash
+npm run typecheck
+TEST_DATABASE_URL=postgres://… npm test
+npm run build && npm start &   # then
+npm run test:e2e
+```
+
+Deployment: see [DEPLOYMENT.md](DEPLOYMENT.md).
+
+## Brand and photos
+
+- Logo: official NOOR Travel & Tours logo (`public/brand/noor-logo-official.jpg`), used unmodified.
+- Photos: Unsplash License, registered with their source in `src/lib/media.ts`; the public credits page is `/en/legal/credits`.
