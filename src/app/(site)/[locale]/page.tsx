@@ -49,7 +49,7 @@ function ProductRow({ items, locale, dict, products, wide }: { items: CatalogIte
   return (
     <div className="scroll-row">
       {items.map((it) => (
-        <div key={it.slug} className={`shrink-0 ${wide ? "w-[78%] sm:w-[340px]" : "w-[70%] sm:w-[280px]"}`}>
+        <div key={it.slug} className={`shrink-0 ${wide ? "w-[86%] sm:w-[400px]" : "w-[82%] sm:w-[330px]"}`}>
           <PhotoCard
             href={`/${locale}${itemPath(it)}`}
             photo={it.photos[0]!}
@@ -95,13 +95,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="relative isolate overflow-hidden bg-noor-navy" aria-labelledby="hero-title">
         <Photo name="heroDubai" priority sizes="100vw" className="-z-10 object-cover opacity-60" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-noor-navy/70 via-noor-navy/40 to-noor-navy/90" />
-        <div className="container-noor pt-8 pb-10 sm:pt-14 sm:pb-16">
+        <div className="container-noor pt-6 pb-8 sm:pt-14 sm:pb-16">
           <p className="chip mb-3 bg-white/15 text-white backdrop-blur">{dict.brand.tagline}</p>
-          <h1 id="hero-title" className="max-w-3xl text-[30px] leading-[1.1] font-extrabold tracking-tight text-white sm:text-5xl">
+          <h1 id="hero-title" className="max-w-3xl text-[26px] leading-[1.1] font-extrabold tracking-tight text-white sm:text-5xl">
             {dict.hero.title}
           </h1>
-          <p className="mt-3 max-w-2xl text-base text-white/90 sm:text-xl">{dict.hero.subtitle}</p>
-          <div className="mt-6 sm:mt-8">
+          <p className="mt-2 max-w-2xl text-sm text-white/90 sm:mt-3 sm:text-xl">{dict.hero.subtitle}</p>
+          <div className="mt-5 sm:mt-8">
             <SearchPanel locale={locale} labels={dict.search} today={todayInDubai()} areaSuggestions={hotelAreas.map((a) => a.name[locale])} />
           </div>
           <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-white/90">
@@ -151,10 +151,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </Section>
 
       {/* 3. Popular destinations */}
-      <Section id="destinations" title={dict.sections.popular} subtitle={dict.sections.popularSub} tone="grey">
+      <Section id="destinations" title={dict.sections.popular} subtitle={dict.sections.popularSub} tone="grey" href={L("/flights")} hrefLabel={dict.sections.seeAll}>
         <div className="scroll-row">
           {popularDestinations.map((d) => (
-            <div key={d.slug} className="w-[58%] shrink-0 sm:w-[230px]">
+            <div key={d.slug} className="w-[72%] shrink-0 sm:w-[290px]">
               <PhotoCard overlay aspect="aspect-[3/4]" href={L(`/flights?to=${d.iata}`)} photo={d.photo} title={d.name[locale]} subtitle={d.country[locale]} testId={`dest-${d.slug}`} />
             </div>
           ))}
@@ -165,7 +165,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Section id="trending-flights" title={dict.sections.trendingFlights} subtitle={dict.sections.trendingFlightsSub} href={L("/flights")} hrefLabel={dict.sections.seeAll}>
         <div className="scroll-row">
           {trendingRoutes.map((r) => (
-            <div key={`${r.from}-${r.to}`} className="w-[70%] shrink-0 sm:w-[260px]">
+            <div key={`${r.from}-${r.to}`} className="w-[82%] shrink-0 sm:w-[330px]">
               <PhotoCard
                 href={L(`/flights?from=${r.from}&to=${r.to}`)}
                 photo={r.photo}
@@ -201,7 +201,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Section id="cars" title={dict.sections.cars} subtitle={dict.sections.carsSub} href={L("/cars")} hrefLabel={dict.sections.seeAll}>
         <div className="scroll-row">
           {carCategories.map((c) => (
-            <div key={c.slug} className="w-[62%] shrink-0 sm:w-[240px]">
+            <div key={c.slug} className="w-[78%] shrink-0 sm:w-[310px]">
               <PhotoCard href={L(`/cars#${c.slug}`)} photo={c.photos[0]!} title={c.title[locale]} subtitle={c.summary[locale]} footer={<Price product={products.get(c.slug)} dict={dict} locale={locale} />} />
             </div>
           ))}
@@ -253,7 +253,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
           <div className="scroll-row">
             {africaCities.map((c) => (
-              <div key={c.slug} className="w-[48%] shrink-0 sm:w-[190px]">
+              <div key={c.slug} className="w-[62%] shrink-0 sm:w-[240px]">
                 <PhotoCard overlay aspect="aspect-[3/4]" href={L(`/africa-to-dubai#${c.slug}`)} photo={c.photo} title={c.name[locale]} subtitle={`${c.country[locale]} · ${c.iata} → DXB`} testId={`africa-${c.slug}`} />
               </div>
             ))}

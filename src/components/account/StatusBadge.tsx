@@ -12,5 +12,5 @@ const tone: Record<string, string> = {
   rejected: "bg-red-100 text-red-800",
 };
 export function StatusBadge({ status, label }: { status: string; label: string }) {
-  return <span className={`chip ${tone[status] ?? "bg-blue-100 text-blue-900"}`} data-testid="status">{label}</span>;
+  return <span className={`chip ${tone[status] ?? "bg-gray-100 text-gray-800"}`} data-testid="status">{label}</span>;
 }

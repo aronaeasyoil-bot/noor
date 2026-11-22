@@ -182,7 +182,7 @@ export function SearchPanel({
                   setTab(t.id);
                   setErrors({});
                 }}
-                className={`flex min-w-[88px] flex-col items-center gap-1 border-b-[3px] px-3 pt-2 pb-2.5 text-[13px] font-bold whitespace-nowrap transition sm:min-w-[110px] ${
+                className={`flex min-w-[74px] flex-col items-center gap-1 border-b-[3px] px-2 pt-2 pb-2 text-[12px] sm:px-3 sm:pb-2.5 sm:text-[13px] font-bold whitespace-nowrap transition sm:min-w-[110px] ${
                   on ? "border-noor-red text-noor-red" : "border-transparent text-noor-muted hover:text-noor-ink"
                 }`}
               >
@@ -194,7 +194,7 @@ export function SearchPanel({
         </div>
       )}
 
-      <form onSubmit={submit} noValidate id={id("panel")} role="tabpanel" aria-labelledby={id(`tab-${tab}`)} className="p-4 sm:p-5" data-testid={`search-form-${tab}`}>
+      <form onSubmit={submit} noValidate id={id("panel")} role="tabpanel" aria-labelledby={id(`tab-${tab}`)} className="p-3.5 sm:p-5" data-testid={`search-form-${tab}`}>
         <datalist id={id("airports")}>
           {airportOptions.map((a) => (
             <option key={a} value={a} />
@@ -202,16 +202,16 @@ export function SearchPanel({
         </datalist>
 
         {tab === "flights" && (
-          <div className="space-y-4">
-            <fieldset className="flex flex-wrap gap-2">
+          <div className="space-y-3 sm:space-y-4">
+            <fieldset className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <legend className="sr-only">{labels.tabs.flights}</legend>
               {(["round", "oneway", "multi"] as const).map((v) => (
-                <label key={v} className={`chip cursor-pointer border px-3 py-1.5 text-sm ${trip === v ? "border-noor-navy bg-noor-navy text-white" : "border-noor-line bg-white text-noor-ink"}`}>
+                <label key={v} className={`chip cursor-pointer border px-2.5 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm ${trip === v ? "border-noor-navy bg-noor-navy text-white" : "border-noor-line bg-white text-noor-ink"}`}>
                   <input type="radio" name="trip" value={v} checked={trip === v} onChange={() => setTrip(v)} className="sr-only" />
                   {v === "round" ? labels.roundTrip : v === "oneway" ? labels.oneWay : labels.multiCity}
                 </label>
               ))}
-              <label className="ms-auto flex cursor-pointer items-center gap-2 text-sm font-semibold">
+              <label className="flex w-full cursor-pointer items-center gap-2 text-xs font-semibold sm:ms-auto sm:w-auto sm:text-sm">
                 <input type="checkbox" checked={direct} onChange={(e) => setDirect(e.target.checked)} className="size-4 accent-noor-red" />
                 {labels.direct}
               </label>

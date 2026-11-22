@@ -2,21 +2,22 @@
 
 /*
  * NOOR design tokens.
- * Primary action colour follows the official logo red; deep blue and gold come from the brand brief.
+ * Colours follow the official logo: red (#cc0202) on white, with black for dark surfaces.
+ * Legacy token names (navy, blue, gold) are kept so components need no rename; they now map to black and red.
  */
 @theme {
-  --color-noor-red: #c8102e;
-  --color-noor-red-dark: #a00d24;
-  --color-noor-red-50: #fdf2f3;
-  --color-noor-navy: #123b75;
-  --color-noor-blue: #1769c2;
-  --color-noor-blue-50: #eef5fd;
-  --color-noor-gold: #c8a45d;
-  --color-noor-gold-50: #faf5ea;
-  --color-noor-ink: #172033;
-  --color-noor-muted: #5b6475;
-  --color-noor-line: #e3e8ef;
-  --color-noor-bg: #f5f7fa;
+  --color-noor-red: #cc0202;
+  --color-noor-red-dark: #a30101;
+  --color-noor-red-50: #fdf0f0;
+  --color-noor-navy: #111111;
+  --color-noor-blue: #cc0202;
+  --color-noor-blue-50: #fdf0f0;
+  --color-noor-gold: #ff4a3d;
+  --color-noor-gold-50: #fdf0f0;
+  --color-noor-ink: #141414;
+  --color-noor-muted: #5f5f5f;
+  --color-noor-line: #e6e6e6;
+  --color-noor-bg: #f6f6f6;
   --color-whatsapp: #25d366;
   --color-whatsapp-dark: #128c7e;
 
@@ -24,8 +25,8 @@
   --font-arabic-stack: var(--font-arabic), var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 
   --radius-card: 14px;
-  --shadow-card: 0 1px 2px rgb(23 32 51 / 0.06), 0 4px 16px rgb(23 32 51 / 0.06);
-  --shadow-float: 0 8px 30px rgb(23 32 51 / 0.14);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 16px rgb(0 0 0 / 0.06);
+  --shadow-float: 0 8px 30px rgb(0 0 0 / 0.14);
   --breakpoint-xs: 23.4rem;
 }
 
@@ -159,9 +160,9 @@
     font-size: 0.75rem;
     font-weight: 600;
   }
+  /* Flex (not grid) so percentage card widths resolve against the row width on phones. */
   .scroll-row {
-    display: grid;
-    grid-auto-flow: column;
+    display: flex;
     gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -173,6 +174,7 @@
     display: none;
   }
   .scroll-row > * {
+    flex-shrink: 0;
     scroll-snap-align: start;
   }
   .prose-noor p {

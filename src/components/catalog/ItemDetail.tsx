@@ -64,6 +64,11 @@ export async function ItemDetail({ item, locale, dict, crumbs, path }: { item: C
             </div>
           ))}
         </section>
+
+        {/* Phones: the booking panel sits below the description, so offer a direct jump to it. */}
+        <a href="#book" className="btn btn-primary mt-4 w-full lg:hidden" data-testid="jump-to-book">
+          {quoteOnly ? dict.quote.title : canPay ? dict.booking.title : dict.booking.requestTitle}
+        </a>
       </div>
 
       <div className="container-noor mt-8 grid gap-8 lg:grid-cols-[1fr_400px]">
@@ -132,7 +137,7 @@ export async function ItemDetail({ item, locale, dict, crumbs, path }: { item: C
           )}
         </div>
 
-        <aside className="min-w-0 lg:sticky lg:top-28 lg:self-start" id="book">
+        <aside className="min-w-0 scroll-mt-20 lg:sticky lg:top-28 lg:self-start" id="book">
           <div className="card p-5">
             <Price product={product} dict={dict} locale={locale} size="lg" />
             <CurrencyNote dict={dict} locale={locale} />

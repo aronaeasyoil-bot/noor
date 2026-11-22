@@ -13,7 +13,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Assistant } from "@/components/assistant/Assistant";
 
 export const viewport: Viewport = {
-  themeColor: "#123b75",
+  themeColor: "#cc0202",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",

@@ -53,7 +53,7 @@ export function Assistant({ locale, labels, whatsappPrefill }: { locale: Locale;
         aria-label={labels.open}
         title={labels.open}
         data-testid="assistant-toggle"
-        className="fixed left-4 bottom-[calc(76px+env(safe-area-inset-bottom))] z-40 grid size-12 place-items-center rounded-full bg-noor-navy text-white shadow-lg transition hover:bg-noor-blue lg:bottom-6"
+        className="fixed end-4 bottom-[calc(136px+env(safe-area-inset-bottom))] z-40 grid size-12 place-items-center rounded-full bg-noor-navy text-white shadow-lg transition hover:bg-noor-red lg:end-6 lg:bottom-24"
       >
         <Icon name={open ? "close" : "sparkles"} size={22} />
       </button>
@@ -63,7 +63,7 @@ export function Assistant({ locale, labels, whatsappPrefill }: { locale: Locale;
           role="dialog"
           aria-label={labels.title}
           data-testid="assistant-panel"
-          className="fixed left-4 bottom-[calc(136px+env(safe-area-inset-bottom))] z-50 flex max-h-[70dvh] w-[min(380px,calc(100vw-32px))] flex-col overflow-hidden rounded-2xl border border-noor-line bg-white shadow-2xl lg:bottom-20"
+          className="fixed end-4 bottom-[calc(196px+env(safe-area-inset-bottom))] z-50 flex max-h-[60dvh] w-[min(380px,calc(100vw-32px))] flex-col overflow-hidden rounded-2xl border border-noor-line bg-white shadow-2xl lg:end-6 lg:bottom-40"
         >
           <header className="flex items-center justify-between bg-noor-navy px-4 py-3 text-white">
             <p className="font-extrabold">{labels.title}</p>

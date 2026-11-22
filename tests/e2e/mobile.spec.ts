@@ -25,3 +25,12 @@ test("mobile: booking button is not hidden by floating buttons", async ({ page }
   }
   await expect(cta).toBeVisible();
 });
+
+test("mobile: home carousel cards use most of the screen width", async ({ page }) => {
+  await page.goto("/fr");
+  const vw = page.viewportSize()!.width;
+  for (const id of ["dest-dubai", "card-burj-khalifa"]) {
+    const box = await page.getByTestId(id).first().boundingBox();
+    expect(box && box.width).toBeGreaterThan(vw * 0.6);
+  }
+});

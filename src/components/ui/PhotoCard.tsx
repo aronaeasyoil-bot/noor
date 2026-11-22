@@ -12,7 +12,7 @@ export function PhotoCard({
   badge,
   footer,
   aspect = "aspect-[4/3]",
-  sizes = "(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 300px",
+  sizes = "(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 400px",
   overlay = false,
   testId,
   action,

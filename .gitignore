@@ -13,3 +13,4 @@ test-results/
 playwright-report/
 storage/
 .pgdata/
+.tmp-shots/
