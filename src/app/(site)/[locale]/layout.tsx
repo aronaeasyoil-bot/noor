@@ -11,6 +11,7 @@ import { Footer } from "@/components/layout/Footer";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Assistant } from "@/components/assistant/Assistant";
+import { siteUrl } from "@/lib/site-url";
 
 export const viewport: Viewport = {
   themeColor: "#cc0202",
@@ -22,7 +23,8 @@ export const viewport: Viewport = {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const locale = await resolveLocale(params);
   const d = getDictionary(locale);
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const base = await siteUrl();
+  const share = { url: "/brand/noor-share.jpg", width: 1200, height: 630, alt: "NOOR Travel & Tours" };
   return {
     metadataBase: new URL(base),
     title: { default: d.meta.title, template: `%s · NOOR` },
@@ -31,7 +33,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     icons: { icon: "/icons/icon-192.png", apple: "/icons/apple-touch-icon.png" },
     appleWebApp: { capable: true, title: "NOOR", statusBarStyle: "default" },
     alternates: { languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])) },
-    openGraph: { title: d.meta.title, description: d.meta.description, images: ["/brand/noor-logo-official.jpg"], siteName: "NOOR Travel & Tours" },
+    openGraph: { type: "website", title: d.meta.title, description: d.meta.description, images: [share], siteName: "NOOR Travel & Tours", locale },
+    twitter: { card: "summary_large_image", title: d.meta.title, description: d.meta.description, images: [share.url] },
   };
 }
 
