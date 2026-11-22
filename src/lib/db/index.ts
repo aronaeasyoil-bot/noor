@@ -1,10 +1,13 @@
 import "server-only";
 import { cache } from "react";
 import postgres from "postgres";
-import { drizzle, type PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { drizzle as drizzleNeon } from "drizzle-orm/neon-serverless";
+import { Pool } from "@neondatabase/serverless";
+import type { PgDatabase, PgQueryResultHKT } from "drizzle-orm/pg-core";
 import * as schema from "./schema";
 
-export type Database = PostgresJsDatabase<typeof schema>;
+export type Database = PgDatabase<PgQueryResultHKT, typeof schema>;
 
 async function connectionString(): Promise<string | null> {
   // On Cloudflare Workers the connection goes through Hyperdrive (pooled, close to the database).
@@ -32,10 +35,13 @@ export const getDb = cache(async (): Promise<Database | null> => {
   if (!url) return null;
   const onWorkers = typeof (globalThis as { WebSocketPair?: unknown }).WebSocketPair !== "undefined";
   if (!onWorkers) {
-    if (!nodeClient) nodeClient = drizzle(postgres(url, { max: 10, prepare: false }), { schema });
+    if (!nodeClient) nodeClient = drizzle(postgres(url, { max: 10, prepare: false }), { schema }) as unknown as Database;
     return nodeClient;
   }
-  return drizzle(postgres(url, { max: 5, fetch_types: false, prepare: false }), { schema });
+  // Neon over TLS: use Neon's WebSocket driver, built for Workers (postgres.js STARTTLS fails there).
+  // Hyperdrive or other hosts: postgres.js over Cloudflare sockets.
+  if (/\.neon\.tech/i.test(url)) return drizzleNeon({ client: new Pool({ connectionString: url, max: 5 }), schema }) as unknown as Database;
+  return drizzle(postgres(url, { max: 5, fetch_types: false, prepare: false }), { schema }) as unknown as Database;
 });
 
 export class DatabaseUnavailableError extends Error {
